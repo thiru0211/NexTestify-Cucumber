@@ -7,6 +7,7 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.time.Duration;
 
+import org.jspecify.annotations.Nullable;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -82,8 +83,8 @@ public class OEP_4_QuestionManager {
 		driver.navigate().refresh();
 	}
 
-	@Given("Enter valid question details in the searchbox")
-	public void enter_valid_question_details_in_the_searchbox() throws InterruptedException {
+	@Given("Enter valid question {string} details in the searchbox")
+	public void enter_valid_question_details_in_the_searchbox(String validQuestion) throws InterruptedException {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.name("txtSearch")));
 		ele1 = driver.findElement(By.name("txtSearch"));
@@ -91,35 +92,123 @@ public class OEP_4_QuestionManager {
 		Thread.sleep(2000);
 		ele1.clear();
 		Thread.sleep(2000);
-		ele1.sendKeys("What is Quantum Cryptography?");
+		ele1.sendKeys(validQuestion);
 		Thread.sleep(2000);
+		ele1.sendKeys(Keys.ENTER);
 	}
 
-	@When("Enter valid answer details in the searchbox")
-	public void enter_valid_answer_details_in_the_searchbox() throws InterruptedException {
+	@When("Enter valid answer {string} details in the searchbox")
+	public void enter_valid_answer_details_in_the_searchbox(String validAnswer) throws InterruptedException {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.name("txtSearch")));
 		ele1 = driver.findElement(By.name("txtSearch"));
+		String searchBox = ele1.getDomProperty("value");
 		ele1.click();
+		int length = searchBox.length();
+		for(int i=0;i<length;i++) {
+			ele1.clear();
+		}
+		Thread.sleep(4000);
+		ele1.sendKeys(validAnswer);
 		Thread.sleep(2000);
-		ele1.clear();
-		Thread.sleep(2000);
-		ele1.sendKeys("Various Cyber Security methods for encrypting and transmitting secure data.");
-		Thread.sleep(2000);
+		ele1.sendKeys(Keys.ENTER);
 	}
 
-	@Then("Enter valid subject name in the searchbox")
-	public void enter_valid_subject_name_in_the_searchbox() throws InterruptedException {
+	@Then("Enter valid subject name {string} in the searchbox")
+	public void enter_valid_subject_name_in_the_searchbox(String validSubjectName)  throws InterruptedException {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.name("txtSearch")));
 		ele1 = driver.findElement(By.name("txtSearch"));
+		String searchBox = ele1.getDomProperty("value");
 		ele1.click();
+		int length = searchBox.length();
+		for(int i=0;i<length;i++) {
+			ele1.clear();
+		}
+		Thread.sleep(4000);
+		ele1.sendKeys(validSubjectName);
 		Thread.sleep(2000);
-		ele1.clear();
-		Thread.sleep(2000);
-		ele1.sendKeys("Artificial Intelligence");
+		ele1.sendKeys(Keys.ENTER);
 	}
 
+	@When("Check entered question {string} details is displayed or not")
+	public void check_entered_question_details_is_displayed_or_not(String validQuestionDetail) throws InterruptedException {
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='col-xl-8 col-lg-8']")));
+		ele1 = driver.findElement(By.xpath("//div[@class='col-xl-8 col-lg-8']"));
+		String actualQuestionDetail = ele1.getText();
+		String expectedQuestionDetail = validQuestionDetail;
+		Assert.assertEquals("Entered question name is not displayed", actualQuestionDetail, expectedQuestionDetail);
+		
+	}
+	
+	@Then("Check entered answer {string} details is displayed or not")
+	public void check_entered_answer_details_is_displayed_or_not(String validAnswerDetail) throws InterruptedException {
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(@class,'pe-7 ms-5')]")));
+		ele1 = driver.findElement(By.xpath("//div[contains(@class,'pe-7 ms-5')]"));
+		String actualAnswerDetail = ele1.getText();
+		String expectedAnswerDetail = validAnswerDetail;
+		Assert.assertEquals("Entered question name is not displayed", actualAnswerDetail, expectedAnswerDetail);
+	}
+	
+	@Then("Check entered subject name {string} details is displayed or not")
+	public void check_entered_subject_name_details_is_displayed_or_not(String validSubjectName) throws InterruptedException {
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[@class='badge bg-outline-primary']")));
+		ele1 = driver.findElement(By.xpath("//span[@class='badge bg-outline-primary']"));
+		String actualSubjectName = ele1.getText();
+		String expectedSubjectName = validSubjectName;
+		Assert.assertEquals("Entered question name is not displayed", actualSubjectName, expectedSubjectName);
+	}
+	
+	@When("Click edit button in any question")
+	public void click_edit_button_in_any_question() throws InterruptedException {
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//button[contains(@class,'btn-icon btn-icon-start')])[1]")));
+		ele1 = driver.findElement(By.xpath("(//button[contains(@class,'btn-icon btn-icon-start')])[1]"));
+		ele1.click();
+	}
+	@When("Check question status {string} is same as user selected")
+	public void check_question_status_is_same_as_user_selected(String selectedQuestionStatus) throws InterruptedException {
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[@class='react-select__value-container react-select__value-container--has-value css-1hwfws3'])[5]")));
+		ele1 = driver.findElement(By.xpath("(//div[@class='react-select__value-container react-select__value-container--has-value css-1hwfws3'])[5]"));
+		String actualquestionStatus=ele1.getText();
+		System.out.println("Status displayed as: "+actualquestionStatus);
+		String expectedQuestionStatus=selectedQuestionStatus;
+		Assert.assertEquals("Status dropdown is not working", actualquestionStatus, expectedQuestionStatus);
+	}
+	
+	@Then("Check question level {string} is same as user selected")
+	public void check_question_level_is_same_as_user_selected(String selectedQuestionLevel) throws InterruptedException {
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[@class='react-select__value-container react-select__value-container--has-value css-1hwfws3'])[4]")));
+		ele1 = driver.findElement(By.xpath("(//div[@class='react-select__value-container react-select__value-container--has-value css-1hwfws3'])[4]"));
+		String actualquestionLevel=ele1.getText();
+		System.out.println("Status displayed as: "+actualquestionLevel);
+		String expectedQuestionLevel=selectedQuestionLevel;
+		Assert.assertEquals("Status dropdown is not working", actualquestionLevel, expectedQuestionLevel);
+	}
+	
+	@Then("Check selected {string} option in subject dropdown")
+	public void check_selected_option_in_subject_dropdown(String selectedSubject) throws InterruptedException {
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//span[@class='badge bg-outline-primary'])[1]")));
+		ele1 = driver.findElement(By.xpath("(//span[@class='badge bg-outline-primary'])[1]"));
+		String actualSubject=ele1.getText();
+		System.out.println("Status displayed as: "+actualSubject);
+		String expectedSubject=selectedSubject;
+		Assert.assertEquals("Subject dropdown is not working", actualSubject, expectedSubject);
+	}
+	
 	@Given("Select All option in status dropdown")
 	public void select_all_option_in_status_dropdown() throws InterruptedException {
 		Thread.sleep(2000);
@@ -147,7 +236,7 @@ public class OEP_4_QuestionManager {
 		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='Active']"));
 		ele2.click();
 	}
-
+	
 	@Given("Select Inactive option in status dropdown")
 	public void select_inactive_option_in_status_dropdown() throws InterruptedException {
 		Thread.sleep(2000);
@@ -320,45 +409,71 @@ public class OEP_4_QuestionManager {
 		System.out.println("Question created username and Date & Time is: " + text);
 	}
 
-	@Given("Click previous button in pagination")
-	public void click_previous_button_in_pagination() throws InterruptedException {
+	@Then("Click previous button in pagination in question manager")
+	public void click_previous_button_in_pagination_in_question_manager() throws InterruptedException {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//a[@class='page-link'])[2]")));
-		ele1 = driver.findElement(By.xpath("(//a[@class='page-link'])[2]"));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//li[contains(.,'Previous')]")));
+		ele1 = driver.findElement(By.xpath("//li[contains(.,'Previous')]"));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", ele1);
 		Thread.sleep(3000);
 		ele1.click();
 	}
 
-	@Given("Click next button in pagination")
-	public void click_next_button_in_pagination() throws InterruptedException {
+	@When("Click next button in pagination in question manager")
+	public void click_next_button_in_pagination_in_question_manager() throws InterruptedException {
+		Thread.sleep(2000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//a[@class='page-link']//span)[3]")));
-		ele1 = driver.findElement(By.xpath("(//a[@class='page-link']//span)[3]"));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//li[contains(.,'Next')]")));
+		ele1 = driver.findElement(By.xpath("//li[contains(.,'Next')]"));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", ele1);
 		Thread.sleep(3000);
 		ele1.click();
 	}
 
-	@Then("Click the number button in pagination")
-	public void click_the_number_button_in_pagination() throws InterruptedException {
+	@Then("Click the number button in pagination in question manager")
+	public void click_the_number_button_in_pagination_in_question_manager() throws InterruptedException {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[normalize-space(text())='60']")));
-		ele1 = driver.findElement(By.xpath("//a[normalize-space(text())='60']"));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[normalize-space(text())='5']")));
+		ele1 = driver.findElement(By.xpath("//a[normalize-space(text())='5']"));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", ele1);
 		Thread.sleep(3000);
 		ele1.click();
 	}
 
+	@Given("Click last button in pagination in question manager")
+	public void click_last_button_in_pagination_in_question_manager() throws InterruptedException {
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//li[contains(.,'Last')]")));
+		ele1 = driver.findElement(By.xpath("//li[contains(.,'Last')]"));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView(true);", ele1);
+		Thread.sleep(3000);
+		ele1.click();
+	}
+	@When("Click first button in pagination in question manager")
+	public void click_first_button_in_pagination_in_question_manager() throws InterruptedException {
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//a[@class='page-link'])[1]")));
+		ele1 = driver.findElement(By.xpath("(//a[@class='page-link'])[1]"));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView(true);", ele1);
+		Thread.sleep(3000);
+		ele1.click();
+	}
+	
 	@Given("Click add questions button")
-	public void click_add_questions_button() {
+	public void click_add_questions_button() throws InterruptedException {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@class='btn btn-primary']")));
-		ele1 = driver.findElement(By.xpath("//button[@class='btn btn-primary']"));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//button[@type='button'])[1]")));
+		ele1 = driver.findElement(By.xpath("(//button[@type='button'])[1]"));
 		ele1.click();
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dropdown-menu show']//a[1]")));
+		ele2 = driver.findElement(By.xpath("//div[@class='dropdown-menu show']//a[1]"));
+		ele2.click();
 	}
 
 	@Given("Click view questions button")
@@ -373,10 +488,10 @@ public class OEP_4_QuestionManager {
 	@Then("Check landing page in add question page")
 	public void check_landing_page_in_add_question_page() {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Add Questions']")));
-		ele1 = driver.findElement(By.xpath("//button[text()='Add Questions']"));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.name("txtSearch")));
+		ele1 = driver.findElement(By.name("txtSearch"));
 		boolean isDisplayed = ele1.isDisplayed();
-		Assert.assertTrue("Button is not displayed.", isDisplayed);
+		Assert.assertTrue("Back button is not working", isDisplayed);
 	}
 
 	@Given("Click save button in add question page")
@@ -451,6 +566,10 @@ public class OEP_4_QuestionManager {
 			System.out.println(
 					"Tab border color is incorrect. Expected: " + expectedBorderColor + ", Actual: " + borderColor4);
 		}
+		Assert.assertEquals("Red border is not displayed in subject tab", borderColor1, expectedBorderColor);
+		Assert.assertEquals("Red border is not displayed in topic tab", borderColor2, expectedBorderColor);
+		Assert.assertEquals("Red border is not displayed in question type tab", borderColor3, expectedBorderColor);
+		Assert.assertEquals("Red border is not displayed in question level tab", borderColor4, expectedBorderColor);
 	}
 
 	@Then("Click clear button in add questions page")
@@ -492,7 +611,7 @@ public class OEP_4_QuestionManager {
 
 			System.out.println("Error getting border color: " + e.getMessage());
 		}
-		String expectedBorderColor = "rgb(255, 0, 0)";
+		String expectedBorderColor = "rgb(78, 78, 78)";
 		System.out.println("Actual border color : " + borderColor1);
 		System.out.println("Actual border color : " + borderColor2);
 		System.out.println("Actual border color : " + borderColor3);
@@ -525,6 +644,11 @@ public class OEP_4_QuestionManager {
 		} else {
 			System.out.println("Red border is not removed");
 		}
+		
+		Assert.assertEquals("Red border is not removed in subject tab", borderColor1, expectedBorderColor);
+		Assert.assertEquals("Red border is not removed in topic tab", borderColor2, expectedBorderColor);
+		Assert.assertEquals("Red border is not removed in question type tab", borderColor3, expectedBorderColor);
+		Assert.assertEquals("Red border is not removed in question level tab", borderColor4, expectedBorderColor);
 	}
 
 	@Given("Click add button in subject tab")
@@ -576,6 +700,7 @@ public class OEP_4_QuestionManager {
 			System.out.println(
 					"Tab border color is incorrect. Expected: " + expectedBorderColor + ", Actual: " + borderColor);
 		}
+		Assert.assertEquals("Red border is not displayed in subject name", borderColor, expectedBorderColor);
 	}
 
 	@Then("Enter special characters in add subject popup")
@@ -797,6 +922,7 @@ public class OEP_4_QuestionManager {
 			System.out.println(
 					"Tab border color is incorrect. Expected: " + expectedBorderColor + ", Actual: " + borderColor);
 		}
+		Assert.assertEquals("Red border is not displayed", borderColor, expectedBorderColor);
 	}
 
 	@Then("Enter valid topic name in add topic popup")
@@ -815,6 +941,8 @@ public class OEP_4_QuestionManager {
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();
 		System.out.println("Success message displayed like: " + actualMessage);
+		String expectedMessage="Topic added successfully!";
+		Assert.assertEquals("Add topic is not working", actualMessage, expectedMessage);
 	}
 
 	@Then("Click edit button in topic tab")
@@ -839,13 +967,27 @@ public class OEP_4_QuestionManager {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("topicName")));
 		ele1 = driver.findElement(By.id("topicName"));
-		String text = ele1.getAttribute("value");
+		String text = ele1.getDomProperty("value");
 		int length = text.length();
 		for (int i = 0; i < length; i++) {
 			ele1.sendKeys(Keys.BACK_SPACE);
 		}
 		Thread.sleep(2000);
-		ele1.sendKeys(text);
+		ele1.sendKeys(text+"s");
+	}
+	
+	@Then("Modify valid subject name in edit topic")
+	public void modify_valid_subject_name_in_edit_topic() throws InterruptedException {
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("topicName")));
+		ele1 = driver.findElement(By.id("topicName"));
+		String text = ele1.getDomProperty("value");
+		int length = text.length();
+		for (int i = 0; i < length; i++) {
+			ele1.sendKeys(Keys.BACK_SPACE);
+		}
+		Thread.sleep(2000);
+		ele1.sendKeys("Test Topic");
 	}
 
 	@Then("Click update button in edit topic popup")
@@ -864,6 +1006,8 @@ public class OEP_4_QuestionManager {
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();
 		System.out.println("Success message displayed like: " + actualMessage);
+		String expectedMessage="Topic updated successfully!";
+		Assert.assertEquals("Test topic add button is not working", actualMessage, expectedMessage);
 	}
 
 	@Then("Click Delete button in topic tab")
@@ -910,6 +1054,8 @@ public class OEP_4_QuestionManager {
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();
 		System.out.println("Success message displayed like: " + actualMessage);
+		String expectedMessage="Topic deleted successfully!";
+		Assert.assertEquals("Delete topic is not working", actualMessage, expectedMessage);
 	}
 
 	@Given("Click add button in Question Type tab")
@@ -961,6 +1107,7 @@ public class OEP_4_QuestionManager {
 			System.out.println(
 					"Tab border color is incorrect. Expected: " + expectedBorderColor + ", Actual: " + borderColor);
 		}
+		Assert.assertEquals("Red border is not displayed in question type pop up", borderColor, expectedBorderColor);
 	}
 
 	@Then("Enter valid question type in add Question Type popup")
@@ -979,6 +1126,8 @@ public class OEP_4_QuestionManager {
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();
 		System.out.println("Success message displayed like: " + actualMessage);
+		String expectedMessage="Question Type added successfully!";
+		Assert.assertEquals("Add question type is not working", actualMessage, expectedMessage);
 	}
 
 	@Given("Select any Question Type from the dropdown")
@@ -994,6 +1143,20 @@ public class OEP_4_QuestionManager {
 		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='Test Type']"));
 		ele2.click();
 	}
+	
+	@Given("Select any Question Type from dropdown")
+	public void select_any_question_type_from_dropdown() throws InterruptedException {
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(
+				"(//div[contains(@class,'react-select__value-container react-select__value-container--has-value')])[2]")));
+		ele1 = driver.findElement(By.xpath(
+				"(//div[contains(@class,'react-select__value-container react-select__value-container--has-value')])[2]"));
+		ele1.click();
+		Thread.sleep(2000);
+		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='Test Types']"));
+		ele2.click();
+	}
 
 	@Then("Select any topic from the dropdown in create questions")
 	public void select_any_topic_from_the_dropdown_in_create_questions() throws InterruptedException {
@@ -1006,6 +1169,20 @@ public class OEP_4_QuestionManager {
 		ele1.click();
 		Thread.sleep(2000);
 		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='Test Topic']"));
+		ele2.click();
+	}
+	
+	@Then("Select any topic from dropdown in create questions")
+	public void select_any_topic_from_dropdown_in_create_questions() throws InterruptedException {
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(
+				"(//div[contains(@class,'react-select__value-container react-select__value-container--has-value')])[2]")));
+		ele1 = driver.findElement(By.xpath(
+				"(//div[contains(@class,'react-select__value-container react-select__value-container--has-value')])[2]"));
+		ele1.click();
+		Thread.sleep(2000);
+		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='Test Topics']"));
 		ele2.click();
 	}
 
@@ -1031,12 +1208,26 @@ public class OEP_4_QuestionManager {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("questType")));
 		ele1 = driver.findElement(By.id("questType"));
-		String text = ele1.getAttribute("value");
+		String text = ele1.getDomProperty("value");
 		int length = text.length();
 		for (int i = 0; i < length; i++) {
 			ele1.sendKeys(Keys.BACK_SPACE);
 		}
-		ele1.sendKeys(text);
+		ele1.sendKeys(text+"s");
+	}
+	
+	@Then("Modify valid subject name in edit Question Type")
+	public void modify_valid_subject_name_in_edit_question_type() throws InterruptedException {
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("questType")));
+		ele1 = driver.findElement(By.id("questType"));
+		String text = ele1.getDomProperty("value");
+		int length = text.length();
+		for (int i = 0; i < length; i++) {
+			ele1.sendKeys(Keys.BACK_SPACE);
+		}
+		Thread.sleep(1000);
+		ele1.sendKeys("Test Type");
 	}
 
 	@Then("Click update button in edit Question Type popup")
@@ -1055,6 +1246,8 @@ public class OEP_4_QuestionManager {
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();
 		System.out.println("Success message displayed like: " + actualMessage);
+		String expectedMessage="Question Type updated successfully!";
+		Assert.assertEquals("Add question type is not working", actualMessage, expectedMessage);
 	}
 
 	@Then("Click Delete button in Question Type tab")
@@ -1101,6 +1294,8 @@ public class OEP_4_QuestionManager {
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();
 		System.out.println("Success message displayed like: " + actualMessage);
+		String expectedMessage="Question Type deleted successfully!";
+		Assert.assertEquals("Question type cannot able to delete", actualMessage, expectedMessage);
 	}
 
 	@Given("Select any option in subject")
@@ -1122,9 +1317,9 @@ public class OEP_4_QuestionManager {
 		Thread.sleep(2000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(
-				"(//div[contains(@class,'react-select__value-container react-select__value-container--has-value')])[2]")));
+				"(//div[@class='react-select__value-container react-select__value-container--has-value css-1hwfws3'])[2]")));
 		ele1 = driver.findElement(By.xpath(
-				"(//div[contains(@class,'react-select__value-container react-select__value-container--has-value')])[2]"));
+				"(//div[@class='react-select__value-container react-select__value-container--has-value css-1hwfws3'])[2]"));
 		ele1.click();
 		Thread.sleep(2000);
 		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='Deep Learning']"));
@@ -1181,6 +1376,7 @@ public class OEP_4_QuestionManager {
 		} else {
 			System.out.println("Image is not uploaded");
 		}
+		Assert.assertTrue("Image File is not uploaded", displayed);
 	}
 
 	@Then("Check file is uploaded or not in audio field")
@@ -1197,6 +1393,7 @@ public class OEP_4_QuestionManager {
 		} else {
 			System.out.println("Audio is not uploaded");
 		}
+		Assert.assertTrue("Audio File is not uploaded", displayed);
 	}
 
 	@Then("Check file is uploaded or not in video field")
@@ -1212,6 +1409,7 @@ public class OEP_4_QuestionManager {
 		} else {
 			System.out.println("Video is not uploaded");
 		}
+		Assert.assertTrue("Video File is not uploaded", displayed);
 	}
 
 	@Then("Check error message is displayed or not in image field")
@@ -1221,6 +1419,8 @@ public class OEP_4_QuestionManager {
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();
 		System.out.println("Success message displayed like: " + actualMessage);
+		String expMessage="Invalid file format!";
+		Assert.assertEquals("Invlaid file format can able to upload", actualMessage, expMessage);
 	}
 
 	@Then("Click and Upload invalid file format in audio field")
@@ -1254,6 +1454,8 @@ public class OEP_4_QuestionManager {
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();
 		System.out.println("Success message displayed like: " + actualMessage);
+		String expMessage="Invalid file format!";
+		Assert.assertEquals("Invlaid file format can able to upload", actualMessage, expMessage);
 	}
 
 	@Then("Click and Upload invalid file format in video field")
@@ -1287,6 +1489,8 @@ public class OEP_4_QuestionManager {
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();
 		System.out.println("Success message displayed like: " + actualMessage);
+		String expMessage="Invalid file format!";
+		Assert.assertEquals("Invlaid file format can able to upload", actualMessage, expMessage);
 	}
 
 	@Then("Click and Upload valid file format in image field")
@@ -1408,14 +1612,15 @@ public class OEP_4_QuestionManager {
 		Thread.sleep(2000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions
-				.presenceOfElementLocated(By.xpath("(//button[contains(@class,'btn-icon btn-icon-start')])[1]")));
-		ele1 = driver.findElement(By.xpath("(//button[contains(@class,'btn-icon btn-icon-start')])[1]"));
+				.presenceOfElementLocated(By.xpath("//div[contains(@class,'text-center mt-2')]")));
+		ele1 = driver.findElement(By.xpath("//div[contains(@class,'text-center mt-2')]"));
 		boolean displayed = ele1.isDisplayed();
-		if (displayed == true) {
+		if (displayed == false) {
 			System.out.println("Image is removed");
 		} else {
 			System.out.println("Image is not removed");
 		}
+		Assert.assertFalse("Image file is not able to delete", displayed);
 	}
 
 	@Then("Click delete button in audio field")
@@ -1435,14 +1640,16 @@ public class OEP_4_QuestionManager {
 		Thread.sleep(2000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions
-				.presenceOfElementLocated(By.xpath("(//div[contains(@class,'d-flex flex-column')])[1]")));
-		ele1 = driver.findElement(By.xpath("(//div[contains(@class,'d-flex flex-column')])[1]"));
+				.presenceOfElementLocated(By.xpath("(//div[@class='d-flex flex-column align-items-center text-white mt-2'])[1]")));
+		ele1 = driver.findElement(By.xpath("(//div[@class='d-flex flex-column align-items-center text-white mt-2'])[1]"));
 		boolean displayed = ele1.isDisplayed();
+		System.out.println("Item displayed status is: "+displayed);
 		if (displayed == true) {
 			System.out.println("Audio is removed");
 		} else {
 			System.out.println("Audio is not removed");
 		}
+		Assert.assertTrue("Audio file is not able to delete", displayed);
 	}
 
 	@Then("Click delete button in video field")
@@ -1465,11 +1672,12 @@ public class OEP_4_QuestionManager {
 				.presenceOfElementLocated(By.xpath("(//div[contains(@class,'d-flex flex-column')])[2]")));
 		ele1 = driver.findElement(By.xpath("(//div[contains(@class,'d-flex flex-column')])[2]"));
 		boolean displayed = ele1.isDisplayed();
-		if (displayed == true) {
+		if (displayed == false) {
 			System.out.println("Video is removed");
 		} else {
 			System.out.println("Video is not removed");
 		}
+		Assert.assertFalse("Video file is not able to delete", displayed);
 	}
 
 	@Then("Select ESSAY option in question type")
@@ -1664,8 +1872,8 @@ public class OEP_4_QuestionManager {
 	@Then("Enter valid details in Explanation text box")
 	public void enter_valid_details_in_explanation_text_box() throws InterruptedException {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[@class='ql-editor ql-blank'])[2]")));
-		ele1 = driver.findElement(By.xpath("(//div[@class='ql-editor ql-blank'])[2]"));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[@class='ql-editor ql-blank'])[1]")));
+		ele1 = driver.findElement(By.xpath("(//div[@class='ql-editor ql-blank'])[1]"));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", ele1);
 		Thread.sleep(2000);
@@ -1729,6 +1937,8 @@ public class OEP_4_QuestionManager {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", ele1);
 		Thread.sleep(2000);
+		ele1.sendKeys(Keys.BACK_SPACE);
+		Thread.sleep(1000);
 		ele1.sendKeys("abc!@#");
 	}
 
@@ -1737,14 +1947,9 @@ public class OEP_4_QuestionManager {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("score")));
 		ele1 = driver.findElement(By.id("score"));
-		String tabText = ele1.getAttribute("value");
-		System.out.println("Text contains: " + tabText);
-		String checkTab = "abc!@#";
-		if (checkTab.equals(tabText)) {
-			System.out.println("Tab contains alpha and special characters");
-		} else {
-			System.out.println("Tab doesnot accept alpha and special characters");
-		}
+		String tabText = ele1.getDomProperty("value");
+		boolean tabValue = tabText.isEmpty();
+		Assert.assertTrue("Tab accept alpha and special characters", tabValue);
 	}
 
 	@Then("Enter special characters in points for answer field")
@@ -1755,6 +1960,8 @@ public class OEP_4_QuestionManager {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", ele1);
 		Thread.sleep(2000);
+		ele1.sendKeys(Keys.BACK_SPACE);
+		Thread.sleep(1000);
 		ele1.sendKeys("ABC!@#");
 	}
 
@@ -1766,6 +1973,8 @@ public class OEP_4_QuestionManager {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", ele1);
 		Thread.sleep(2000);
+		ele1.sendKeys(Keys.BACK_SPACE);
+		Thread.sleep(1000);
 		ele1.sendKeys("abc!@#");
 	}
 
@@ -1774,14 +1983,9 @@ public class OEP_4_QuestionManager {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("time")));
 		ele1 = driver.findElement(By.id("time"));
-		String tabText = ele1.getAttribute("value");
-		System.out.println("Text contains: " + tabText);
-		String checkTab = "abc!@#";
-		if (checkTab.equals(tabText)) {
-			System.out.println("Tab contains alpha and special characters");
-		} else {
-			System.out.println("Tab doesnot accept alpha and special characters");
-		}
+		String tabText = ele1.getDomProperty("value");
+		boolean tabValue = tabText.isEmpty();
+		Assert.assertTrue("Tab accept alpha and special characters", tabValue);
 	}
 
 	@Then("Enter special characters in Time field")
@@ -2000,6 +2204,8 @@ public class OEP_4_QuestionManager {
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();
 		System.out.println("Success message displayed like: " + actualMessage);
+		String expMessage="Question & Answer saved successfully!";
+		Assert.assertEquals("Save button is not working", actualMessage, expMessage);
 	}
 
 	@Then("Enter valid question details for fill in the blanks type")
@@ -2120,6 +2326,8 @@ public class OEP_4_QuestionManager {
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();
 		System.out.println("Success message displayed like: " + actualMessage);
+		String expMessage="Question & Answer saved successfully!";
+		Assert.assertEquals("Save button is not working", actualMessage, expMessage);
 	}
 
 	@Then("Enter valid question details for Multiple Choice type")
@@ -2163,7 +2371,7 @@ public class OEP_4_QuestionManager {
 		}
 		Thread.sleep(2000);
 		ele2 = driver.findElement(By.id("chk2"));
-			ele2.click();
+		ele2.click();
 	}
 
 	@Then("Enter valid explanation details for Multiple Choice type")
@@ -2260,6 +2468,8 @@ public class OEP_4_QuestionManager {
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();
 		System.out.println("Success message displayed like: " + actualMessage);
+		String expMessage="Question & Answer saved successfully!";
+		Assert.assertEquals("Save button is not working", actualMessage, expMessage);
 	}
 
 	@Then("Enter valid question details for Short Answer type")
@@ -2378,6 +2588,8 @@ public class OEP_4_QuestionManager {
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();
 		System.out.println("Success message displayed like: " + actualMessage);
+		String expMessage="Question & Answer saved successfully!";
+		Assert.assertEquals("Save button is not working", actualMessage, expMessage);
 	}
 
 	@Then("Enter valid question details for Single Choice type")
@@ -2401,9 +2613,11 @@ public class OEP_4_QuestionManager {
 		Thread.sleep(2000);
 		ele1.sendKeys("Option 1");
 		Thread.sleep(2000);
-		ele1.sendKeys("Option 2");
+		ele2 = driver.findElement(By.xpath("(//div[@class='ql-editor ql-blank'])[1]"));
+		ele2.sendKeys("Option 2");
 		Thread.sleep(2000);
-		ele1.sendKeys("Option 3");
+		ele3 = driver.findElement(By.xpath("(//div[@class='ql-editor ql-blank'])[1]"));
+		ele3.sendKeys("Option 3");
 	}
 
 	@Then("Select any valid radio in answers field for Single Choice type")
@@ -2511,6 +2725,8 @@ public class OEP_4_QuestionManager {
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();
 		System.out.println("Success message displayed like: " + actualMessage);
+		String expMessage="Question & Answer saved successfully!";
+		Assert.assertEquals("Save button is not working", actualMessage, expMessage);
 	}
 
 	@Then("Enter valid question details for True or False type")
@@ -2534,7 +2750,8 @@ public class OEP_4_QuestionManager {
 		Thread.sleep(2000);
 		ele1.sendKeys("True");
 		Thread.sleep(2000);
-		ele1.sendKeys("False");
+		ele2 = driver.findElement(By.xpath("(//div[@class='ql-editor ql-blank'])[1]"));
+		ele2.sendKeys("False");
 	}
 
 	@Then("Select any valid radio in answers field for True or False type")
@@ -2642,6 +2859,8 @@ public class OEP_4_QuestionManager {
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();
 		System.out.println("Success message displayed like: " + actualMessage);
+		String expMessage="Question & Answer saved successfully!";
+		Assert.assertEquals("Save button is not working", actualMessage, expMessage);
 	}
 
 	@Then("Enter valid details in question tab")
@@ -2703,7 +2922,7 @@ public class OEP_4_QuestionManager {
 		js.executeScript("arguments[0].scrollIntoView(true);", ele1);
 		Thread.sleep(2000);
 		String tabvalue = ele1.getText();
-		System.out.println("Tab value is: "+tabvalue);
+		System.out.println("Tab value is: " + tabvalue);
 		boolean checktabvalue = tabvalue.trim().isEmpty();
 		Assert.assertTrue("Tab is not empty.", checktabvalue);
 	}
@@ -2713,7 +2932,7 @@ public class OEP_4_QuestionManager {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.name("txtSearch")));
 		ele1 = driver.findElement(By.name("txtSearch"));
-		ele1.sendKeys("Test Questions");
+		ele1.sendKeys("Write an Essay about AI");
 	}
 
 	@Then("Select All Subject option in status dropdown")
@@ -2838,8 +3057,10 @@ public class OEP_4_QuestionManager {
 	@Then("Check details are cleared or not in edit question page")
 	public void check_details_are_cleared_or_not_in_edit_question_page() throws InterruptedException {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[@class='react-select__value-container react-select__value-container--has-value css-1hwfws3'])[1]")));
-		ele1 = driver.findElement(By.xpath("(//div[@class='react-select__value-container react-select__value-container--has-value css-1hwfws3'])[1]"));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(
+				"(//div[@class='react-select__value-container react-select__value-container--has-value css-1hwfws3'])[1]")));
+		ele1 = driver.findElement(By.xpath(
+				"(//div[@class='react-select__value-container react-select__value-container--has-value css-1hwfws3'])[1]"));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", ele1);
 		Thread.sleep(2000);
@@ -2858,7 +3079,7 @@ public class OEP_4_QuestionManager {
 		js.executeScript("arguments[0].scrollIntoView(true);", ele1);
 		Thread.sleep(2000);
 		String actualDetail = ele1.getText();
-		System.out.println("Actual text is: "+actualDetail);
+		System.out.println("Actual text is: " + actualDetail);
 		Thread.sleep(2000);
 		ele1.clear();
 		Thread.sleep(2000);
@@ -2884,6 +3105,8 @@ public class OEP_4_QuestionManager {
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();
 		System.out.println("Success message displayed like: " + actualMessage);
+		String expMessage="Question & Answer updated successfully!";
+		Assert.assertEquals("Save button is not working", actualMessage, expMessage);
 	}
 
 }

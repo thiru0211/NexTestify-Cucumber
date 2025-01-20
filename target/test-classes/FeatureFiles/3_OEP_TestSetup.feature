@@ -9,8 +9,11 @@ Feature: TEST SETUP
   @TC_01
   Scenario: Test Setup:Search Check
     Given Enter valid test name "Sample Test-Main Test" in the searchbox
-    When Enter valid date "Jan 29, 2025, 08:51 PM" in the searchbox
-    Then Enter valid description "Main Test for automation testing" in the searchbox
+    When Check entered "Sample Test-Main Test" test name details is displayed or not in the test setup page
+    And Enter valid date "Jan 29, 2025, 09:51 PM" in the searchbox
+    Then Check entered "Jan 29, 2025, 09:51 PM" date details is displayed or not in the test setup page
+    And Enter valid description "Sample Main test created for automation testing" in the searchbox
+    Then Check entered "Sample Main test created for automation testing" description details is displayed or not in the test setup page
     Then Close Test Setup button
 
   @TC_02
@@ -26,9 +29,11 @@ Feature: TEST SETUP
 
   @TC_03
   Scenario: Test Setup:Test Type Check
-    Given Select "All Test" 1st Option in the dropdown
-    When Select "Practice Test" 2nd Option in the dropdown
-    Then Select "Main Test" 3rd Option in the dropdown
+    Given Select "All Test" 1st Option in dropdown
+    When Select "Practice Test" 2nd Option in dropdown
+    Then Check selected "Practice Test" option is displayed or not
+    And Select "Main Test" 3rd Option in dropdown
+    Then Check selected "Main Test" option is displayed or not
     Then Close Test Setup button
 
   @TC_04
@@ -71,8 +76,9 @@ Feature: TEST SETUP
   @TC_09
   Scenario: Basic Settings:Clear Check
     Given Click new test button
-    Then Click Practice Test radio button
+    Then Click Main Test radio button
     And Enter valid test name
+    Then Enter valid Proctoring Capacity count
     Then Select valid subject name
     And Select valid level
     Then Enter valid description details
@@ -102,7 +108,7 @@ Feature: TEST SETUP
     And Select valid level
     Then Enter valid description details
     And Click save button
-    Then Check success message is displayed or not in test portal page
+    Then Check success message is displayed or not in Basic Settings tab
     Then Close Test Setup button
 
   @TC_12
@@ -145,6 +151,7 @@ Feature: TEST SETUP
     Given Search any valid main test name
     Then Click the test name
     And Click question manager tab
+    Then Click clear button in question manager
     And Select any topic from the dropdown
     Then Click add button
     And Check red border is displayed or not in the mandatory tab
@@ -175,7 +182,23 @@ Feature: TEST SETUP
     And Click add button
     Then Click delete button
     And Click Yes button in the pop up
-    Then Check success message is displayed or not in test portal page
+    Then Check success message for deleted topic is displayed or not in question manager tab
+    Then Close Test Setup button
+
+  @TC_17a
+  Scenario: Question Manager:Delete YES Check
+    Given Search any valid main test name
+    Then Click the test name
+    And Click question manager tab
+    Then Enter valid overall question
+    And Enter valid overall points
+    Then Select valid topic
+    And Click add button
+    And Enter valid value in questions tab
+    Then Enter valid value in points tab
+    And Enter valid in Time tab based on proper format
+    Then Click update button
+    Then Check success message is displayed or not in Question Manager tab
     Then Close Test Setup button
 
   @TC_18
@@ -236,7 +259,7 @@ Feature: TEST SETUP
     And Enter the value in questions tab more than overall points tab
     Then Enter  valid in Time tab
     And Click save button in question manager
-    Then check error message is displayed or not
+    Then check error message is displayed or not in question manager tab
     Then Close Test Setup button
 
   @TC_22
@@ -255,20 +278,26 @@ Feature: TEST SETUP
     And Check all tabs are cleared or not in question manager
     Then Close Test Setup button
 
-  @TC_23
+   @TC_23
   Scenario: Question Manager:Save Check
-    Given Search any valid main test name
-    Then Click the test name
+    Given Click new test button
+    Then Click Practice Test radio button
+    And Enter valid test name
+    Then Select valid subject name
+    And Select valid level
+    Then Enter valid description details
+    And Click save button
+    Then Check success message is displayed or not in Basic Settings tab
     And Click question manager tab
     And Enter valid overall question values
     Then Enter valid overall points values
     And Select valid topic
     Then Click add button
-    And Enter valid value in questions tab
-    Then Enter valid value in points tab
-    And Enter valid in Time tab based on proper format
+    And Enter valid value in questions tab in Question Manager
+    Then Enter valid value in points tab in Question Manager
+    And Enter valid in Time tab based on proper format in Question Manager
     Then Click save button in question manager
-    And Check success message is displayed or not in test portal page
+    And Check success message is displayed or not in Question Manager
     Then Close Test Setup button
 
   @TC_24
@@ -280,16 +309,63 @@ Feature: TEST SETUP
     And Check landing page
     Then Close Test Setup button
 
-  @TC_25
-  Scenario: Time Setup:Valid Check
-    Given Search any valid practice test name
-    Then Click the practice test name
+   @TC_25
+  Scenario: Basic Settings:Save Check
+    Given Click new test button
+    Then Click Main Test radio button
+    And Enter valid test name
+    Then Enter valid Proctoring Capacity count
+    And Select valid subject name
+    And Select valid level
+    Then Enter valid description details
+    And Click save button
+    Then Check success message is displayed or not in Basic Settings tab
+    And Click question manager tab
+    And Enter valid overall question values
+    Then Enter valid overall points values
+    And Select valid topic
+    Then Click add button
+    And Enter valid value in questions tab in Question Manager
+    Then Enter valid value in points tab in Question Manager
+    And Enter valid in Time tab based on proper format in Question Manager
+    Then Click save button in question manager
+    And Check success message is displayed or not in Question Manager
     And Click time setup tab
+    Then Enter invalid "January 17, 2025 3:30 PM" Test activation Date and Time in time setup tab
+    And Enter invalid "January 17, 2025 3:30 PM" Last Registration Date and Time in time setup tab
     Then Click save button in time setup
-    And Check success message is displayed or not in test portal page
+    And Check error message is displayed or not in time setup tab
     Then Close Test Setup button
 
-  @TC_29
+  @TC_26
+  Scenario: Time Setup:Valid Check
+    Given Click new test button
+    Then Click Main Test radio button
+    And Enter valid test name
+    Then Enter valid Proctoring Capacity count
+    And Select valid subject name
+    And Select valid level
+    Then Enter valid description details
+    And Click save button
+    Then Check success message is displayed or not in Basic Settings tab
+    And Click question manager tab
+    And Enter valid overall question values
+    Then Enter valid overall points values
+    And Select valid topic
+    Then Click add button
+    And Enter valid value in questions tab in Question Manager
+    Then Enter valid value in points tab in Question Manager
+    And Enter valid in Time tab based on proper format in Question Manager
+    Then Click save button in question manager
+    And Check success message is displayed or not in Question Manager
+    And Click time setup tab
+    Then Enter valid "December 17, 2025 3:30 PM" Test activation Date and Time in time setup tab
+    And Enter valid "December 15, 2025 3:30 PM" Last Registration Date and Time in time setup tab
+    Then Click save button in time setup
+    And Check success message is displayed or not in time setup tab
+    Then Close Test Setup button
+
+  @TC_27
   Scenario: Grading Setup:Valid Check
     Given Search any valid main test name
     Then Click the test name
@@ -299,7 +375,7 @@ Feature: TEST SETUP
     Then Enter valid message in the all respondents text box
     Then Close Test Setup button
 
-  @TC_30
+  @TC_28
   Scenario: Grading Setup:Valid Check
     Given Search any valid main test name
     Then Click the test name
@@ -309,7 +385,7 @@ Feature: TEST SETUP
     Then Enter valid message in the all passed text box
     Then Close Test Setup button
 
-  @TC_31
+  @TC_29
   Scenario: Grading Setup:Valid Check
     Given Search any valid main test name
     Then Click the test name
@@ -319,18 +395,18 @@ Feature: TEST SETUP
     Then Enter valid message in the all failed text box
     Then Close Test Setup button
 
-  @TC_32
+  @TC_30
   Scenario: Grading Setup:Pass Mark Invalid Check
     Given Search any valid main test name
     Then Click the test name
     And Click Grading setup tab
-    Then Enter alpha characters in Pass Mark tab
+    Then Enter alpha characters "Test" in Pass Mark tab
     And Check tab is empty or not in Pass Mark tab
-    Then Enter special characters in Pass Mark tab
+    Then Enter special characters "!@#$%" in Pass Mark tab
     And Check tab is empty or not in Pass Mark tab
     Then Close Test Setup button
 
-  @TC_33
+  @TC_31
   Scenario: Grading Setup:Add Range Check
     Given Search any valid main test name
     Then Click the test name
@@ -339,7 +415,7 @@ Feature: TEST SETUP
     And Check new row is added or not
     Then Close Test Setup button
 
-  @TC_34
+  @TC_32
   Scenario: Grading Setup:Clear Check
     Given Search any valid main test name
     Then Click the test name
@@ -348,7 +424,7 @@ Feature: TEST SETUP
     And Check all tab is cleared or not in grading setup
     Then Close Test Setup button
 
-  @TC_35
+  @TC_33
   Scenario: Grading Setup:Mandatory Alert Check
     Given Search any valid main test name
     Then Click the test name
@@ -358,10 +434,32 @@ Feature: TEST SETUP
     And Check error message is displayed or not in grading setup page
     Then Close Test Setup button
 
-  @TC_36
+  @TC_34
   Scenario: Grading Setup:Valid Check
-    Given Search any valid main test name
-    Then Click the test name
+    Given Click new test button
+    Then Click Main Test radio button
+    And Enter valid test name
+    Then Enter valid Proctoring Capacity count
+    And Select valid subject name
+    And Select valid level
+    Then Enter valid description details
+    And Click save button
+    Then Check success message is displayed or not in Basic Settings tab
+    And Click question manager tab
+    And Enter valid overall question values
+    Then Enter valid overall points values
+    And Select valid topic
+    Then Click add button
+    And Enter valid value in questions tab in Question Manager
+    Then Enter valid value in points tab in Question Manager
+    And Enter valid in Time tab based on proper format in Question Manager
+    Then Click save button in question manager
+    And Check success message is displayed or not in Question Manager
+    And Click time setup tab
+    Then Enter valid "December 17, 2025 3:30 PM" Test activation Date and Time in time setup tab
+    And Enter valid "December 15, 2025 3:30 PM" Last Registration Date and Time in time setup tab
+    Then Click save button in time setup
+    And Check success message is displayed or not in time setup tab
     And Click Grading setup tab
     Then Click clear button
     And Enter valid test end message details
@@ -380,10 +478,32 @@ Feature: TEST SETUP
     And Check success message is displayed or not in grading setup
     Then Close Test Setup button
 
-  @TC_37
+  @TC_35
   Scenario: Grading Setup:Valid Check
-    Given Search any valid main test name
-    Then Click the test name
+    Given Click new test button
+    Then Click Main Test radio button
+    And Enter valid test name
+    Then Enter valid Proctoring Capacity count
+    And Select valid subject name
+    And Select valid level
+    Then Enter valid description details
+    And Click save button
+    Then Check success message is displayed or not in Basic Settings tab
+    And Click question manager tab
+    And Enter valid overall question values
+    Then Enter valid overall points values
+    And Select valid topic
+    Then Click add button
+    And Enter valid value in questions tab in Question Manager
+    Then Enter valid value in points tab in Question Manager
+    And Enter valid in Time tab based on proper format in Question Manager
+    Then Click save button in question manager
+    And Check success message is displayed or not in Question Manager
+    And Click time setup tab
+    Then Enter valid "December 17, 2025 3:30 PM" Test activation Date and Time in time setup tab
+    And Enter valid "December 15, 2025 3:30 PM" Last Registration Date and Time in time setup tab
+    Then Click save button in time setup
+    And Check success message is displayed or not in time setup tab
     And Click Grading setup tab
     Then Click clear button
     And Enter valid test end message details
@@ -394,13 +514,15 @@ Feature: TEST SETUP
     Then Select "P" 1st option in ranges unit
     And Enter valid from range value in range 1st tab
     Then Enter valid to range value in range 1st tab
+    And Enter valid grade "A" in range 1st tab
     And Enter valid from range value in range 2nd tab
     Then Enter valid to range value in range 2nd tab
+    And Enter valid grade "s" in range 2nd tab
     Then Click save button in grading setup
     And Check success message is displayed or not in grading setup
     Then Close Test Setup button
 
-  @TC_38
+  @TC_36
   Scenario: Certificate Template:Valid Check
     Given Search any valid main test name
     Then Click the test name
@@ -409,7 +531,7 @@ Feature: TEST SETUP
     And Check checkbox is unselected or not
     Then Close Test Setup button
 
-  @TC_39
+  @TC_37
   Scenario: Certificate Template:Valid Check
     Given Search any valid main test name
     Then Click the test name
@@ -418,7 +540,7 @@ Feature: TEST SETUP
     And Check checkbox is selected or not
     Then Close Test Setup button
 
-  @TC_40
+  @TC_38
   Scenario: Test Access:Invalid Check
     Given Search any valid main test name
     Then Click the test name
@@ -428,7 +550,7 @@ Feature: TEST SETUP
     Then Check error message is displayed or not in test access
     Then Close Test Setup button
 
-  @TC_41
+  @TC_39
   Scenario: Test Access:Valid Check
     Given Search any valid main test name
     Then Click the test name
@@ -438,7 +560,7 @@ Feature: TEST SETUP
     Then Check success message is displayed or not in test access
     Then Close Test Setup button
 
-  @TC_43
+  @TC_40
   Scenario: Test Access:Valid Check
     Given Search any valid main test name
     Then Click the test name
@@ -448,7 +570,7 @@ Feature: TEST SETUP
     Then Check success message is displayed or not in test access
     Then Close Test Setup button
 
-  @TC_44
+  @TC_41
   Scenario: Test Access:Valid Check
     Given Search any valid main test name
     Then Click the test name
@@ -459,14 +581,14 @@ Feature: TEST SETUP
     Then Check success message is displayed or not in test access
     Then Close Test Setup button
 
-  #@TC_45(Due to if we publish the test, test change to completed status thats why i skip the test method)
-  #Scenario: Publish Test:Valid Check
+  #@TC_41a(Due to if we Finalize the test, test change to completed status thats why i skip the test method)
+  #Scenario: Finalize Test:Valid Check
   #Given Search any valid main test name
   #Then Click the test name
-  #And Click Publish Test tab
-  #Then Click publish button
+  #And Click Finalize Test tab
+  #Then Click Finalize button
   #Then Close Test Setup button
-  @TC_47
+  @TC_42
   Scenario: Practice Test:Valid Check
     Given Click new test button
     Then Click Practice Test radio button
@@ -475,7 +597,7 @@ Feature: TEST SETUP
     And Select valid test level
     Then Enter valid test description
     And Click save button in practice test
-    Then Check success message is displayed or not in test portal page
+    Then Check success message is displayed or not in Basic Settings tab
     And Enter valid overall questions value
     Then Enter valid overall points value
     And Select valid topic in add topics
@@ -484,9 +606,9 @@ Feature: TEST SETUP
     Then Enter valid points value in points tab
     And Enter valid time value in time tab
     Then Click save button in question manager
-    And Check success message is displayed or not in test portal page
+    And Check success message is displayed or not in Question Manager
     Then Click save button in time setup page
-    And Check success message is displayed or not in test portal page
+    And Check success message is displayed or not in time setup tab
     Then Enter valid pass mark in grading setup
     And Enter valid from range mark tab in 1st range tab in grading setup
     Then Enter valid to range mark tab in 1st range tab in grading setups
@@ -495,12 +617,12 @@ Feature: TEST SETUP
     And Enter valid to range mark tab in 2st range tab in grading setups
     Then Enter valid grade mark tab in 2st range tab in grading setup
     And Click save button in grading setup
-    Then Check success message is displayed or not in test portal page
-    And Click publish button in publish test page
-    Then Check success message is displayed or not in test portal page
+    Then Check success message is displayed or not in grading setup
+    And Click finalize button in Finalize test page
+    Then Check success message is displayed or not in Finalize Test tab
     Then Close Test Setup button
 
-  @TC_48
+   @TC_43
   Scenario: Main Test:Valid Check
     Given Click new test button
     Then Click Main Test radio button
@@ -534,10 +656,10 @@ Feature: TEST SETUP
     And Click save button in grading setup
     Then Check success message is displayed or not in test portal page
     And Click save button in certificate template page
-    Then Check success message is displayed or not in test portal page
+    Then Check success message is displayed or not in certificate template page
     Then Close Test Setup button
 
-  @TC_49
+  @TC_44
   Scenario: Edit Test:Basic Settings
     Given Search any valid main test name
     And Select "In Progress" 2nd Option in the dropdown
@@ -546,7 +668,7 @@ Feature: TEST SETUP
     Then Check all tabs are cleared or not
     Then Close Test Setup button
 
-  @TC_50
+  @TC_45
   Scenario: Edit Test:Basic Settings
     Given Search any valid main test name
     And Select "In Progress" 2nd Option in the dropdown
@@ -556,7 +678,7 @@ Feature: TEST SETUP
     And Check success message is displayed or not in basic settings
     Then Close Test Setup button
 
-  @TC_51
+   @TC_46
   Scenario: Edit Test:Question Manager
     Given Search any valid main test name
     And Select "In Progress" 2nd Option in the dropdown
@@ -566,7 +688,7 @@ Feature: TEST SETUP
     Then Check all tabs are cleared or not in question manager
     Then Close Test Setup button
 
-  @TC_52
+   @TC_47
   Scenario: Edit Test:Question Manager
     Given Search any valid main test name
     And Select "In Progress" 2nd Option in the dropdown
@@ -577,7 +699,7 @@ Feature: TEST SETUP
     And Check success message is displayed or not in Question Manager
     Then Close Test Setup button
 
-  @TC_54
+  @TC_48
   Scenario: Edit Test:Test Access
     Given Search any valid main test name
     And Select "In Progress" 2nd Option in the dropdown
@@ -588,7 +710,7 @@ Feature: TEST SETUP
     Then Check success message is displayed or not in test access
     Then Close Test Setup button
 
-  @TC_55
+  @TC_49
   Scenario: Edit Test:Grading Setup
     Given Search any valid main test name
     And Select "In Progress" 2nd Option in the dropdown
@@ -598,7 +720,7 @@ Feature: TEST SETUP
     And Check all tab is cleared or not in grading setup
     Then Close Test Setup button
 
-  @TC_56
+  @TC_50
   Scenario: Edit Test:Grading Setup
     Given Search any valid main test name
     And Select "In Progress" 2nd Option in the dropdown
@@ -606,10 +728,10 @@ Feature: TEST SETUP
     And Click Grading setup tab
     Then Modify the details in Grading Setup
     And Click update button in Grading Setup
-    Then Check success message is displayed or not in grading setup
+    Then  tab
     Then Close Test Setup button
 
-  @TC_57
+  @TC_51
   Scenario: Edit Test:Certificate Template
     Given Search any valid main test name
     And Select "In Progress" 2nd Option in the dropdown
