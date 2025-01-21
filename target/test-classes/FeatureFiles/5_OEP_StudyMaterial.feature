@@ -198,7 +198,7 @@ Feature: STUDY MATERIAL
     And Click update button in edit topic tab
     Then Check success message is displayed or not in edit topic popup
     Then Close Study Material button
-    
+    @Test
     @TC_22
   Scenario: Delete Topic:Close button Check
     Given Click any subject name

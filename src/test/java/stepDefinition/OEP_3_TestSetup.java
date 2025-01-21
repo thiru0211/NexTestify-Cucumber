@@ -705,7 +705,8 @@ public class OEP_3_TestSetup {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Question Manager']")));
 		ele1 = driver.findElement(By.xpath("//button[text()='Question Manager']"));
-		Thread.sleep(2000);
+		Thread.sleep(3000);
+		ele1 = driver.findElement(By.xpath("//button[text()='Question Manager']"));
 		ele1.click();
 	}
 
@@ -908,11 +909,14 @@ public class OEP_3_TestSetup {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("tquest-2")));
 		ele1 = driver.findElement(By.id("tquest-2"));
-		ele1.click();
+		String questionValue=ele1.getDomProperty("value");
+		int length = questionValue.length();
 		Thread.sleep(2000);
-		ele1.clear();
+		for(int i=0;i<length;i++) {
+			ele1.sendKeys(Keys.BACK_SPACE);
+		}
 		Thread.sleep(2000);
-		ele1.sendKeys("Sample Test");
+		ele1.sendKeys("Sample");
 	}
 
 	@Then("Check tab is empty or not in Questions tab")
@@ -933,9 +937,12 @@ public class OEP_3_TestSetup {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("tquest-2")));
 		ele1 = driver.findElement(By.id("tquest-2"));
-		ele1.click();
+		String questionValue=ele1.getDomProperty("value");
+		int length = questionValue.length();
 		Thread.sleep(2000);
-		ele1.clear();
+		for(int i=0;i<length;i++) {
+			ele1.sendKeys(Keys.BACK_SPACE);
+		}
 		Thread.sleep(2000);
 		ele1.sendKeys("!@#$%^");
 	}
@@ -945,9 +952,12 @@ public class OEP_3_TestSetup {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("tscore-2")));
 		ele1 = driver.findElement(By.id("tscore-2"));
-		ele1.click();
+		String questionValue=ele1.getDomProperty("value");
+		int length = questionValue.length();
 		Thread.sleep(2000);
-		ele1.clear();
+		for(int i=0;i<length;i++) {
+			ele1.sendKeys(Keys.BACK_SPACE);
+		}
 		Thread.sleep(2000);
 		ele1.sendKeys("Sample Test");
 	}
@@ -966,9 +976,12 @@ public class OEP_3_TestSetup {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("tscore-2")));
 		ele1 = driver.findElement(By.id("tscore-2"));
-		ele1.click();
+		String questionValue=ele1.getDomProperty("value");
+		int length = questionValue.length();
 		Thread.sleep(2000);
-		ele1.clear();
+		for(int i=0;i<length;i++) {
+			ele1.sendKeys(Keys.BACK_SPACE);
+		}
 		Thread.sleep(2000);
 		ele1.sendKeys("!@#$%^");
 	}
@@ -1215,11 +1228,12 @@ public class OEP_3_TestSetup {
 	}
 
 	@Then("Click save button in time setup")
-	public void click_save_button_in_time_setup() {
+	public void click_save_button_in_time_setup() throws InterruptedException {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions
 				.presenceOfElementLocated(By.xpath("//button[@title='click here to save time setup']")));
 		ele1 = driver.findElement(By.xpath("//button[@title='click here to save time setup']"));
+		Thread.sleep(2000);
 		ele1.click();
 	}
 
@@ -1228,6 +1242,8 @@ public class OEP_3_TestSetup {
 		Thread.sleep(4000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Grading Setup']")));
+		ele1 = driver.findElement(By.xpath("//button[text()='Grading Setup']"));
+		Thread.sleep(2000);
 		ele1 = driver.findElement(By.xpath("//button[text()='Grading Setup']"));
 		ele1.click();
 	}
@@ -1283,7 +1299,8 @@ public class OEP_3_TestSetup {
 	}
 
 	@Then("Check all features are working or not in the all passed text box")
-	public void check_all_features_are_working_or_not_in_the_all_passed_text_box() {
+	public void check_all_features_are_working_or_not_in_the_all_passed_text_box() throws InterruptedException {
+	Thread.sleep(3000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//button[@class='ql-header'])[3]")));
 		ele1 = driver.findElement(By.xpath("(//button[@class='ql-header'])[3]"));
@@ -2039,11 +2056,12 @@ public class OEP_3_TestSetup {
 	}
 
 	@Then("Click save button in time setup page")
-	public void click_save_button_in_time_setup_page() {
+	public void click_save_button_in_time_setup_page() throws InterruptedException {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions
 				.presenceOfElementLocated(By.xpath("//button[@title='click here to save time setup']")));
 		ele1 = driver.findElement(By.xpath("//button[@title='click here to save time setup']"));
+		Thread.sleep(2000);
 		ele1.click();
 	}
 

@@ -671,6 +671,7 @@ public class OEP_2_Admin {
 		ele1.click();
 		Thread.sleep(2000);
 		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='+91']"));
+		Thread.sleep(2000);
 		ele2.click();
 	}
 
@@ -1077,6 +1078,7 @@ public class OEP_2_Admin {
 		ele1.click();
 		Thread.sleep(2000);
 		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='+91']"));
+		Thread.sleep(1000);
 		ele2.click();
 	}
 
@@ -1244,13 +1246,13 @@ public class OEP_2_Admin {
 		String borderColor;
 		try {
 			borderColor = ele1.getCssValue("border-color");
-			System.out.println("Border color is: "+borderColor);
+			System.out.println("Actual Border color is: "+borderColor);
 		} catch (Exception e) {
 			borderColor = "not available";
 			System.out.println("Error getting border color: " + e.getMessage());
 		}
 		String expectedBorderColor = "rgb(255, 0, 0)";
-		System.out.println("Actual border color : " + borderColor);
+		System.out.println("Expected border color is : " + expectedBorderColor);
 		Assert.assertEquals("Red border is not displayed in valid tab", borderColor, expectedBorderColor);
 	}
 
