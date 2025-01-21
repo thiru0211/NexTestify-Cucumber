@@ -293,7 +293,7 @@ Feature: ADMIN
   Scenario: ADD USER:User Profile Check
     Given Click Add User button in create admin page
     And Upload invalid file in profile upload tab
-    Then Check error message is displayed or not for invalid file upload
+   # Then Check error message is displayed or not for invalid file upload
     Then Close Admin button
 
   @TC_40

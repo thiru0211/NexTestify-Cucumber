@@ -107,8 +107,8 @@ public class OEP_1_LoginPage {
 		    System.out.println("Alert message displayed like : " + actualText);
 		    Assert.assertTrue("Alert message is not displayed", isDisplayed); 
 		} catch (TimeoutException e) {
-		    System.out.println("Alert message is not displayed"); // Print the message here
-		    Assert.fail("Alert message is not found."); 
+		    System.out.println("Alert message is not displayed and page navigates to next page"); // Print the message here
+		    Assert.fail("Alert message is not found and page navigates to next page"); 
 		}
 	}
 

@@ -1072,9 +1072,9 @@ public class OEP_2_Admin {
 		Thread.sleep(2000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(
-				"(//div[contains(@class,'react-select__value-container react-select__value-container--has-value')])[2]")));
+				"(//div[@class='react-select__value-container react-select__value-container--has-value css-1hwfws3'])[2]")));
 		ele1 = driver.findElement(By.xpath(
-				"(//div[contains(@class,'react-select__value-container react-select__value-container--has-value')])[2]"));
+				"(//div[@class='react-select__value-container react-select__value-container--has-value css-1hwfws3'])[2]"));
 		ele1.click();
 		Thread.sleep(2000);
 		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='+91']"));
@@ -1094,8 +1094,8 @@ public class OEP_2_Admin {
 	public void check_error_message_is_displayed_or_not_for_invalid_file_upload() throws InterruptedException {
 		Thread.sleep(2000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='Toastify__toast-body']")));
-		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='Toastify__toast Toastify__toast--default danger']")));
+		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast Toastify__toast--default danger']"));
 		String actText = ele1.getText();
 		System.out.println("Error message displayed like: " + actText);
 		String expText="Invalid file format!";
