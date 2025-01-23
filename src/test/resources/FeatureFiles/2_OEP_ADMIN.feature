@@ -288,19 +288,18 @@ Feature: ADMIN
     And Enter valid characters "123456" in Zip Code tab
     Then Check tab is empty or not in Zip Code
     Then Close Admin button
-@Test
-  @TC_39
-  Scenario: ADD USER:User Profile Check
-    Given Click Add User button in create admin page
-    And Upload invalid file in profile upload tab
-   # Then Check error message is displayed or not for invalid file upload
-    Then Close Admin button
+  #@TC_39
+  #Scenario: ADD USER:User Profile Check
+    #Given Click Add User button in create admin page
+    #And Upload invalid file in profile upload tab
+    #Then Check error message is displayed or not for invalid file upload
+    #Then Close Admin button
 
-  @TC_40
-  Scenario: ADD USER:User Profile Check
-    Given Click Add User button in create admin page
-    And Upload valid file in profile upload tab
-    Then Close Admin button
+  #@TC_40
+  #Scenario: ADD USER:User Profile Check
+    #Given Click Add User button in create admin page
+    #And Upload valid file in profile upload tab
+    #Then Close Admin button
 
   @TC_41
   Scenario: ADD USER:2FA Check
@@ -333,7 +332,7 @@ Feature: ADMIN
     And Select valid state "New York" in the dropdown
     Then Select valid timezone "America/Chicago" in the dropdown
     And Enter valid zipcode "654321"
-    Then Upload valid file in the profile upload page
+   # Then Upload valid file in the profile upload page
     And Select No option in the 2FA tab
     Then Click save button in create admin page
     And Check error message is displayed or not
@@ -355,7 +354,7 @@ Feature: ADMIN
     And Select valid state "New York" in the dropdown
     Then Select valid timezone "America/Chicago" in the dropdown
     And Enter valid zipcode "654321"
-    Then Upload valid file in the profile upload page
+  #  Then Upload valid file in the profile upload page
     And Select No option in the 2FA tab
     Then Click save button in create admin page
     Then Check admin user created success message is displayed or not

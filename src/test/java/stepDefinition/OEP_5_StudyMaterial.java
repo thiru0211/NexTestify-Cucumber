@@ -63,7 +63,7 @@ public class OEP_5_StudyMaterial {
 	public void close_study_material_button() throws InterruptedException {
 		Thread.sleep(2000);
 		driver.quit();
-		System.out.print("\u001B[1mPage is closed\u001B[0m");
+		System.out.print("Page is closed");
 	}
 
 	@Then("Click Study Material button")
@@ -659,6 +659,20 @@ public class OEP_5_StudyMaterial {
 		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='Test Topic']"));
 		ele2.click();
 	}
+	
+	@Then("Select any topic name from the dropdown in topic")
+	public void select_any_topic_name_from_the_dropdown_in_topic() throws InterruptedException {
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(
+				"(//div[contains(@class,'react-select__value-container react-select__value-container--has-value')])[2]")));
+		ele1 = driver.findElement(By.xpath(
+				"(//div[contains(@class,'react-select__value-container react-select__value-container--has-value')])[2]"));
+		ele1.click();
+		Thread.sleep(2000);
+		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='Test Topics']"));
+		ele2.click();
+	}
 
 	@Then("Select any topic name from the dropdown in the topic tab")
 	public void select_any_topic_name_from_the_dropdown_in_the_topic_tab() throws InterruptedException {
@@ -702,7 +716,21 @@ public class OEP_5_StudyMaterial {
 		for (int i = 0; i < length; i++) {
 			ele1.sendKeys(Keys.BACK_SPACE);
 		}
-		ele1.sendKeys(topicName);
+		ele1.sendKeys(topicName+"s");
+	}
+	
+	@Then("Modify valid topic details in edit topic")
+	public void modify_valid_topic_details_in_edit_topic() {
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("topicName")));
+		ele1 = driver.findElement(By.id("topicName"));
+		String topicName = ele1.getDomAttribute("value");
+		System.out.println("Subject name is: " + topicName);
+		int length = topicName.length();
+		for (int i = 0; i < length; i++) {
+			ele1.sendKeys(Keys.BACK_SPACE);
+		}
+		ele1.sendKeys("Test Topic");
 	}
 
 	@Then("Click update button in edit topic tab")
@@ -794,7 +822,7 @@ public class OEP_5_StudyMaterial {
 
 	@Then("Check success message is displayed or not in add material page")
 	public void check_success_message_is_displayed_or_not_in_add_material_page() throws InterruptedException {
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='Toastify__toast-body']")));
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
@@ -806,7 +834,7 @@ public class OEP_5_StudyMaterial {
 
 	@Then("Check success message is displayed or not in add material")
 	public void check_success_message_is_displayed_or_not_in_add_material() throws InterruptedException {
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='Toastify__toast-body']")));
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
@@ -984,10 +1012,11 @@ public class OEP_5_StudyMaterial {
 	}
 
 	@When("Click edit button of any exercise question")
-	public void click_edit_button_of_any_exercise_question() {
+	public void click_edit_button_of_any_exercise_question() throws InterruptedException {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions
 				.presenceOfElementLocated(By.xpath("(//button[contains(@class,'btn-icon btn-icon-start')])[1]")));
+		Thread.sleep(3000);
 		ele1 = driver.findElement(By.xpath("(//button[contains(@class,'btn-icon btn-icon-start')])[1]"));
 		ele1.click();
 	}

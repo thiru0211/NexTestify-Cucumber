@@ -10,12 +10,12 @@ import io.cucumber.junit.CucumberOptions;
 glue = "stepDefinition",
 monochrome = true,
 //dryRun = true,
-tags="@TC_17",
+//tags="@TC_17",
 plugin = {"pretty","html:Reports/TestReport.html",
-		"json:target/cucumber/cucumber.json",
-		"html:Reports/cucumber-reports.html",
-		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-		"rerun:target/FailedScenarios.txt"
+//		"json:target/cucumber/cucumber.json",
+//		"html:Reports/cucumber-reports.html",
+//		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+//		"rerun:target/FailedScenarios.txt"
 		})
 public class OEP_1_LoginPageRunnerTest {
 

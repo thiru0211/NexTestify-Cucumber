@@ -147,6 +147,7 @@ Feature: STUDY MATERIAL
     #Then Click delete button of the subject tab
     #Then Click Yes button in the delete subject popup
     #Then Close Study Material button
+
      @TC_17
   Scenario: Add Topic:Close button Check
     Given Click any subject name
@@ -176,7 +177,7 @@ Feature: STUDY MATERIAL
     Then Click add button in add topic tab
     And Check success message is displayed or not in add material page
     Then Close Study Material button
-    
+
      @TC_20
   Scenario: Edit Topic:Close button Check
     Given Click any subject name
@@ -198,7 +199,19 @@ Feature: STUDY MATERIAL
     And Click update button in edit topic tab
     Then Check success message is displayed or not in edit topic popup
     Then Close Study Material button
-    @Test
+    
+    @TC_21a
+  Scenario: Edit Topic:Update button Check
+    Given Click any subject name
+    When Click add material button
+    And Select any subject from the dropdown in the subject tab
+    Then Select any topic name from the dropdown in topic
+    And Click edit button in topic tab in create material page
+    Then Modify valid topic details in edit topic
+    And Click update button in edit topic tab
+    Then Check success message is displayed or not in edit topic popup
+    Then Close Study Material button
+
     @TC_22
   Scenario: Delete Topic:Close button Check
     Given Click any subject name
@@ -208,7 +221,7 @@ Feature: STUDY MATERIAL
     And Click delete button in topic tab
     Then Click close button in delete topic
     Then Close Study Material button
-    
+
     @TC_23
   Scenario: Delete Topic:No button Check
     Given Click any subject name
@@ -228,7 +241,7 @@ Feature: STUDY MATERIAL
     And Click delete button in topic tab
     Then Click yes button in delete topic
     Then Close Study Material button
-    
+
     @TC_25
   Scenario: Add Material:Valid Check
     Given Click any subject name

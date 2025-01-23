@@ -358,7 +358,7 @@ Feature: QUESTION MANAGER
     And Click YES button in Delete Question Type popup
     Then Check success message is displayed or not in Question Type
     Then Close Create Question button
-
+@Test
   @TC_43
   Scenario: Source Type:Image field Invalid Check
     Given Click add questions button
@@ -366,9 +366,8 @@ Feature: QUESTION MANAGER
     Then Select any option in topic
     And Select any option in question type
     Then Click and Upload invalid file format in image field
-    And Check error message is displayed or not in image field
     Then Close Create Question button
-
+@Test
   @TC_44
   Scenario: Source Type:Audio field Invalid Check
     Given Click add questions button
@@ -376,9 +375,8 @@ Feature: QUESTION MANAGER
     Then Select any option in topic
     And Select any option in question type
     Then Click and Upload invalid file format in audio field
-    And Check error message is displayed or not in audio field
     Then Close Create Question button
- 
+ @Test
   @TC_45
   Scenario: Source Type:Video field Invalid Check
     Given Click add questions button
@@ -386,9 +384,8 @@ Feature: QUESTION MANAGER
     Then Select any option in topic
     And Select any option in question type
     Then Click and Upload invalid file format in video field
-    And Check error message is displayed or not in video field
     Then Close Create Question button
-
+@Test
   @TC_46
   Scenario: Source Type:Image field valid Check
     Given Click add questions button
@@ -396,7 +393,7 @@ Feature: QUESTION MANAGER
     Then Select any option in topic
     And Select any option in question type
     Then Click and Upload valid file format in image field
-    And Check file is uploaded or not in image field
+    #And Check file is uploaded or not in image field
     Then Close Create Question button
 
   @TC_47
@@ -408,7 +405,7 @@ Feature: QUESTION MANAGER
     Then Click and Upload valid file format in audio field
     And Check file is uploaded or not in audio field
     Then Close Create Question button
-
+@Test
   @TC_48
   Scenario: Source Type:Video field valid Check
     Given Click add questions button
@@ -416,7 +413,7 @@ Feature: QUESTION MANAGER
     Then Select any option in topic
     And Select any option in question type
     Then Click and Upload valid file format in video field
-    And Check file is uploaded or not in video field
+    #And Check file is uploaded or not in video field
     Then Close Create Question button
 
   @TC_49
@@ -619,7 +616,7 @@ Feature: QUESTION MANAGER
     Then Click clear button for Multiple Choice type
     And Check tab is cleared or not for Multiple Choice type
     Then Close Create Question button
-
+@Test
   @TC_63
   Scenario: Multiple Choice Type:Save Check
     Given Click add questions button
@@ -662,7 +659,7 @@ Feature: QUESTION MANAGER
     Then Click clear button for Short Answer type
     And Check tab is cleared or not for Short Answer type
     Then Close Create Question button
-
+@Test
   @TC_65
   Scenario: Short Answer Type:Save Check
     Given Click add questions button

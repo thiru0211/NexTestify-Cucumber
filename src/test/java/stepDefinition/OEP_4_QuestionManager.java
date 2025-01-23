@@ -33,7 +33,7 @@ public class OEP_4_QuestionManager {
 	public void to_check_create_question_is_navigating_to_oep_url_is(String url) {
 		System.setProperty("webdriver.chrome.driver", ".\\Driver\\chromedriver.exe");
 		ChromeOptions option = new ChromeOptions();
-//		option.addArguments("--headless=new");
+		option.addArguments("--headless=new");
 		driver = new ChromeDriver(option);
 		driver.manage().window().maximize();
 		driver.get(url);
@@ -1368,8 +1368,8 @@ public class OEP_4_QuestionManager {
 	public void check_file_is_uploaded_or_not_in_image_field() throws InterruptedException {
 		Thread.sleep(2000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(@class,'text-center mt-2')]")));
-		ele1 = driver.findElement(By.xpath("//div[contains(@class,'text-center mt-2')]"));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='text-center mt-2 col-xl-8 col-lg-8']")));
+		ele1 = driver.findElement(By.xpath("//div[@class='text-center mt-2 col-xl-8 col-lg-8']"));
 		boolean displayed = ele1.isDisplayed();
 		if (displayed == true) {
 			System.out.println("Image is uploaded");
@@ -1413,8 +1413,9 @@ public class OEP_4_QuestionManager {
 	}
 
 	@Then("Check error message is displayed or not in image field")
-	public void check_error_message_is_displayed_or_not_in_image_field() {
-		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+	public void check_error_message_is_displayed_or_not_in_image_field() throws InterruptedException {
+		Thread.sleep(1500);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='Toastify__toast-body']")));
 		ele1 = driver.findElement(By.xpath("//div[@class='Toastify__toast-body']"));
 		String actualMessage = ele1.getText();

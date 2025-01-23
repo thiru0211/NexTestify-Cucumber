@@ -34,7 +34,7 @@ public class OEP_2_Admin {
 	public void to_check_admin_is_navigating_to_oep_url_is(String url) {
 		System.setProperty("webdriver.chrome.driver", ".\\Driver\\chromedriver.exe");
 		ChromeOptions option = new ChromeOptions();
-//		option.addArguments("--headless=old");
+		option.addArguments("--headless=new");
 		driver = new ChromeDriver(option);
 		driver.manage().window().maximize();
 		driver.get(url);
@@ -96,7 +96,7 @@ public class OEP_2_Admin {
 	public void close_admin_button() throws InterruptedException {
 		Thread.sleep(2000);
 		driver.quit();
-		System.out.print("\u001B[1mPage is closed\u001B[0m");
+		System.out.print("Page is closed");
 	}
 
 	@When("Check entered username {string} is displayed or not in create admin page")
@@ -663,7 +663,8 @@ public class OEP_2_Admin {
 	
 	@Then("Select valid country code {string}")
 	public void select_valid_country_code(String phone) throws InterruptedException {
-		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(50));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(
 				"(//div[contains(@class,'react-select__value-container react-select__value-container--has-value')])[2]")));
 		ele1 = driver.findElement(By.xpath(

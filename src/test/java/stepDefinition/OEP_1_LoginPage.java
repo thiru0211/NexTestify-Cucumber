@@ -57,7 +57,7 @@ public class OEP_1_LoginPage {
 	@Then("close the Login Page")
 	public void close_the_admin_page() {
 		driver.quit();
-		System.out.print("\u001B[1mPage is closed\u001B[0m");
+		System.out.print("Page is closed");
 	}
 
 	@Then("Click User logo button in Top right corner")
