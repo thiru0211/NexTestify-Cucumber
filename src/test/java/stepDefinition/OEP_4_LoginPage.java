@@ -21,7 +21,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class OEP_1_LoginPage {
+public class OEP_4_LoginPage {
 	public WebDriver driver;
 	public WebElement ele, ele1, ele2, ele3, ele4, ele5, ele6, ele7, ele8, ele9;
 	public WebDriverWait wait;

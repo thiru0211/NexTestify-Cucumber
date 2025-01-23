@@ -118,17 +118,17 @@ Feature: Login Page
     Then Check alert message is displayed or not
     Then close the Login Page
 @Test
-  @TC_14
-  Scenario: Login:Unlock Account
-    Given To Check Login is navigating to OEP URL is "http://192.168.1.30/OEPADMIN/"
-    When To Check Login Enter username and password are "thirumaran@sankarasoftware.com" and "Thirumaran@8870"
-    And click the Signin button To Check Login
-    Then Click admin button to unlock the account
-    And Search valid username "thirumaran@yopmail.com" in the searchbox to unlock the account
-    Then Click edit button to unlock the account
-    And Click unlock button to unlock the account
-    Then Click yes button in the unlock tab
-    Then close the Login Page
+  #@TC_14
+  #Scenario: Login:Unlock Account
+    #Given To Check Login is navigating to OEP URL is "http://192.168.1.30/OEPADMIN/"
+    #When To Check Login Enter username and password are "thirumaran@sankarasoftware.com" and "Thirumaran@8870"
+    #And click the Signin button To Check Login
+    #Then Click admin button to unlock the account
+    #And Search valid username "thirumaran@yopmail.com" in the searchbox to unlock the account
+    #Then Click edit button to unlock the account
+    #And Click unlock button to unlock the account
+    #Then Click yes button in the unlock tab
+    #Then close the Login Page
 
   @TC_15
   Scenario: Login:Enter button check

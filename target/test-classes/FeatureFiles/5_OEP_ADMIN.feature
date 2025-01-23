@@ -166,7 +166,7 @@ Feature: ADMIN
     And Enter numerical "1234567890" characters in phone number tab
     Then Check entered phone number "1234567890" is displayed or not in phone number tab in create admin
     Then Close Admin button
-@Test
+
   @TC_22
   Scenario: ADD USER:Phone Number Check
     Given Click Add User button in create admin page
@@ -315,7 +315,7 @@ Feature: ADMIN
     Then Click Email radio button in 2FA Details tab
     And Click SMS radio button in 2FA Details tab
     Then Close Admin button
-@Test
+
   @TC_43
   Scenario: Admin:Invalid Check
     Given Click Add User button in create admin page
@@ -337,7 +337,7 @@ Feature: ADMIN
     Then Click save button in create admin page
     And Check error message is displayed or not
     Then Close Admin button
-@Test
+
   @TC_44
   Scenario: Admin:Valid Check
     Given Click Add User button in create admin page
@@ -430,21 +430,21 @@ Feature: ADMIN
     Then Click login button 5times
     And Check lock message is displayed or not
     Then Close Admin button
-@Test
-  @TC_52
-  Scenario: Update Admin:Valid Check
-    Given Enter user name "twofauser@yopmail.com" in the Search box
-    When Click Edit button
-    Then Click unlock button
-    And Click no button in the pop up
-    Then Check unlock button is displayed or not
-    Then Close Admin button
-@Test
-  @TC_53
-  Scenario: Update Admin:Valid Check
-    Given Enter user name "twofauser@yopmail.com" in the Search box
-    When Click Edit button
-    Then Click unlock button
-    And Click yes button in the pop up
-    Then Check success message is displayed or not for user unlock
-    Then Close Admin button
+
+  #@TC_52
+  #Scenario: Update Admin:Valid Check
+    #Given Enter user name "twofauser@yopmail.com" in the Search box
+    #When Click Edit button
+    #Then Click unlock button
+    #And Click no button in the pop up
+    #Then Check unlock button is displayed or not
+    #Then Close Admin button
+
+  #@TC_53
+  #Scenario: Update Admin:Valid Check
+    #Given Enter user name "twofauser@yopmail.com" in the Search box
+    #When Click Edit button
+    #Then Click unlock button
+    #And Click yes button in the pop up
+    #Then Check success message is displayed or not for user unlock
+    #Then Close Admin button

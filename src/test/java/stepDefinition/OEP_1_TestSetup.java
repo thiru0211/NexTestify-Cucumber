@@ -19,7 +19,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class OEP_3_TestSetup {
+public class OEP_1_TestSetup {
 	public WebDriver driver;
 	public WebElement ele, ele1, ele2, ele3, ele4, ele5, ele6, ele7, ele8, ele9;
 	public WebDriverWait wait;
@@ -63,8 +63,8 @@ public class OEP_3_TestSetup {
 	public void click_test_setup_button() throws InterruptedException {
 		Thread.sleep(2000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[text()='Test Setup'])[1]")));
-		ele1 = driver.findElement(By.xpath("(//span[text()='Test Setup'])[1]"));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[contains(.,'Test SetupTest Setup')]")));
+		ele1 = driver.findElement(By.xpath("//li[contains(.,'Test SetupTest Setup')]"));
 		Actions action = new Actions(driver);
 		action.moveToElement(ele1).build().perform();
 		ele1.click();
