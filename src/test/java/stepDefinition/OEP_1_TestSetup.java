@@ -1537,18 +1537,18 @@ public class OEP_1_TestSetup {
 	public void check_all_tab_is_cleared_or_not_in_grading_setup() throws InterruptedException {
 		Thread.sleep(2000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='ql-container ql-snow']//div)[1]")));
-		ele1 = driver.findElement(By.xpath("(//div[@class='ql-container ql-snow']//div)[1]"));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='ql-editor ql-blank'])[1]")));
+		ele1 = driver.findElement(By.xpath("(//div[@class='ql-editor ql-blank'])[1]"));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(0, 0);");
 		Thread.sleep(3000);
 		String allRespondents = ele1.getText();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='ql-container ql-snow']//div)[2]")));
-		ele2 = driver.findElement(By.xpath("(//div[@class='ql-container ql-snow']//div)[2]"));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='ql-editor ql-blank'])[2]")));
+		ele2 = driver.findElement(By.xpath("(//div[@class='ql-editor ql-blank'])[2]"));
 		String passedMessage = ele2.getText();
 
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='ql-container ql-snow']//div)[3]")));
-		ele3 = driver.findElement(By.xpath("(//div[@class='ql-container ql-snow']//div)[3]"));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='ql-editor ql-blank'])[3]")));
+		ele3 = driver.findElement(By.xpath("(//div[@class='ql-editor ql-blank'])[3]"));
 		String failedMessage = ele3.getText();
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("mark")));

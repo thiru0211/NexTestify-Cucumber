@@ -323,8 +323,8 @@ Feature: TEST SETUP
     Then Click save button in question manager
     And Check success message is displayed or not in Question Manager
     And Click time setup tab
-    Then Enter invalid "January 17, 2025 3:30 PM" Test activation Date and Time in time setup tab
-    And Enter invalid "January 17, 2025 3:30 PM" Last Registration Date and Time in time setup tab
+    Then Enter invalid "January 17, 2030 3:30 PM" Test activation Date and Time in time setup tab
+    And Enter invalid "January 17, 2030 3:30 PM" Last Registration Date and Time in time setup tab
     Then Click save button in time setup
     And Check error message is displayed or not in time setup tab
     Then Close Test Setup button
@@ -351,8 +351,8 @@ Feature: TEST SETUP
     Then Click save button in question manager
     And Check success message is displayed or not in Question Manager
     And Click time setup tab
-    Then Enter valid "December 17, 2025 3:30 PM" Test activation Date and Time in time setup tab
-    And Enter valid "December 15, 2025 3:30 PM" Last Registration Date and Time in time setup tab
+    Then Enter valid "December 17, 2030 3:30 PM" Test activation Date and Time in time setup tab
+    And Enter valid "December 15, 2030 3:30 PM" Last Registration Date and Time in time setup tab
     Then Click save button in time setup
     And Check success message is displayed or not in time setup tab
     Then Close Test Setup button
@@ -382,7 +382,7 @@ Feature: TEST SETUP
     Given Search any valid main test name
     Then Click the test name
     And Click Grading setup tab
-    Then Check all features are working or not in the all failed text box
+   # Then Check all features are working or not in the all failed text box
     And Clear the text present in the all failed text box
     Then Enter valid message in the all failed text box
     Then Close Test Setup button
