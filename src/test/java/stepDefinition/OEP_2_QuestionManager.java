@@ -33,7 +33,7 @@ public class OEP_2_QuestionManager {
 	public void to_check_create_question_is_navigating_to_oep_url_is(String url) {
 		System.setProperty("webdriver.chrome.driver", ".\\Driver\\chromedriver.exe");
 		ChromeOptions option = new ChromeOptions();
-		option.addArguments("--headless=new");
+//		option.addArguments("--headless=new");
 		driver = new ChromeDriver(option);
 		driver.manage().window().maximize();
 		driver.get(url);
@@ -3027,10 +3027,12 @@ public class OEP_2_QuestionManager {
 	}
 
 	@Then("Click edit button in create question page")
-	public void click_edit_button_in_create_question_page() {
+	public void click_edit_button_in_create_question_page() throws InterruptedException {
+		Thread.sleep(2000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions
 				.presenceOfElementLocated(By.xpath("(//button[contains(@class,'btn-icon btn-icon-start')])[1]")));
+		Thread.sleep(2000);
 		ele1 = driver.findElement(By.xpath("(//button[contains(@class,'btn-icon btn-icon-start')])[1]"));
 		ele1.click();
 	}

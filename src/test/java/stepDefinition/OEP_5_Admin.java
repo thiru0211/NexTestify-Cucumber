@@ -666,9 +666,9 @@ public class OEP_5_Admin {
 		Thread.sleep(2000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(50));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(
-				"(//div[contains(@class,'react-select__value-container react-select__value-container--has-value')])[2]")));
+				"//div[normalize-space(text())='Select']")));
 		ele1 = driver.findElement(By.xpath(
-				"(//div[contains(@class,'react-select__value-container react-select__value-container--has-value')])[2]"));
+				"//div[normalize-space(text())='Select']"));
 		ele1.click();
 		Thread.sleep(2000);
 		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='+91']"));

@@ -267,9 +267,9 @@ public class OEP_1_TestSetup {
 	@Then("Check entered {string} description details is displayed or not in the test setup page")
 	public void check_entered_description_details_is_displayed_or_not_in_the_test_setup_page(String description)
 			throws InterruptedException {
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='text-muted']")));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='text-muted']")));
 		Thread.sleep(2000);
 		ele1 = driver.findElement(By.xpath("//div[@class='text-muted']"));
 		String actualDescription = ele1.getText();
