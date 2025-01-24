@@ -14,8 +14,7 @@ import io.cucumber.junit.CucumberOptions;
 				"html:Reports/TestReport.html",
 				"json:target/cucumber/cucumber.json",
 				"html:Reports/cucumber-reports.html",
-				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-				"rerun:target/FailedScenarios.txt"
+				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 				})
 public class OEP_3_StudyMaterialRunnerTest {
 
