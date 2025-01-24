@@ -123,7 +123,7 @@ Feature: TEST SETUP
     And Click save button
     Then Check success message is displayed or not in test portal page
     Then Close Test Setup button
-@Test
+
   @TC_13
   Scenario: Question Manager:Invalid Check
     Given Search any valid main test name
@@ -134,7 +134,7 @@ Feature: TEST SETUP
     And Enter special characters in Overall Questions
     Then Check tab is empty or not in Overall Questions
     Then Close Test Setup button
-@Test
+
   @TC_14
   Scenario: Question Manager:Invalid Check
     Given Search any valid main test name
@@ -145,7 +145,7 @@ Feature: TEST SETUP
     And Enter special characters in Overall Points
     Then Check tab is empty or not
     Then Close Test Setup button
-@Test
+
   @TC_15
   Scenario: Question Manager:Mandatory Check
     Given Search any valid main test name
@@ -156,7 +156,7 @@ Feature: TEST SETUP
     Then Click add button
     And Check red border is displayed or not in the mandatory tab
     Then Close Test Setup button
-@Test
+
   @TC_16
   Scenario: Question Manager:Delete NO Check
     Given Search any valid main test name
@@ -170,7 +170,7 @@ Feature: TEST SETUP
     And Click No button in the pop up
     Then Check topic is removed or not
     Then Close Test Setup button
-@Test
+
   @TC_17
   Scenario: Question Manager:Delete YES Check
     Given Search any valid main test name
@@ -184,7 +184,7 @@ Feature: TEST SETUP
     And Click Yes button in the pop up
     Then Check success message for deleted topic is displayed or not in question manager tab
     Then Close Test Setup button
-@Test
+
   @TC_17a
   Scenario: Question Manager:Delete YES Check
     Given Search any valid main test name
@@ -200,7 +200,7 @@ Feature: TEST SETUP
     Then Click update button
     Then Check success message is displayed or not in Question Manager tab
     Then Close Test Setup button
-@Test
+
   @TC_18
   Scenario: Question Manager:Topic Invalid Check
     Given Search any valid main test name
@@ -211,7 +211,7 @@ Feature: TEST SETUP
     And Enter special characters in Questions tab
     Then Check tab is empty or not in Questions tab
     Then Close Test Setup button
-@Test
+
   @TC_19
   Scenario: Question Manager:Topic Invalid Check
     Given Search any valid main test name
@@ -222,38 +222,30 @@ Feature: TEST SETUP
     And Enter special characters in points tab
     Then Check tab is empty or not in points tab
     Then Close Test Setup button
-@Test
+
   @TC_20
   Scenario: Question Manager:Topic Invalid Check
     Given Search any valid main test name
     Then Click the test name
     And Click question manager tab
-    Then Enter valid overall question
-    And Enter valid overall points
-    Then Select valid topic
-    And Click add button
     And Enter alpha characters in Time tab
     Then Check tab is empty or not in Time tab
     And Enter special characters in Time tab
     Then Check tab is empty or not in Time tab
     Then Close Test Setup button
-@Test
+
   @TC_21
   Scenario: Question Manager:Topic Invalid Check
     Given Search any valid main test name
     Then Click the test name
     And Click question manager tab
-    Then Enter valid overall question
-    And Enter valid overall points
-    Then Select valid topic
-    And Click add button
     Then Enter the value in questions tab more than overall questions tab
     And Enter the value in questions tab more than overall points tab
     Then Enter  valid in Time tab
     And Click save button in question manager
     Then check error message is displayed or not in question manager tab
     Then Close Test Setup button
-@Test
+
   @TC_22
   Scenario: Question Manager:Clear Check
     Given Search any valid main test name
@@ -300,7 +292,7 @@ Feature: TEST SETUP
     Then Click question manager button
     And Check landing page
     Then Close Test Setup button
-@Test
+
    @TC_25
   Scenario: Basic Settings:Save Check
     Given Click new test button
@@ -328,7 +320,7 @@ Feature: TEST SETUP
     Then Click save button in time setup
     And Check error message is displayed or not in time setup tab
     Then Close Test Setup button
-@Test
+
   @TC_26
   Scenario: Time Setup:Valid Check
     Given Click new test button
@@ -366,7 +358,7 @@ Feature: TEST SETUP
     And Clear the text present in the all respondents text box
     Then Enter valid message in the all respondents text box
     Then Close Test Setup button
-@Test
+
   @TC_28
   Scenario: Grading Setup:Valid Check
     Given Search any valid main test name
@@ -376,7 +368,7 @@ Feature: TEST SETUP
     And Clear the text present in the all passed text box
     Then Enter valid message in the all passed text box
     Then Close Test Setup button
-@Test
+
   @TC_29
   Scenario: Grading Setup:Valid Check
     Given Search any valid main test name
@@ -425,7 +417,7 @@ Feature: TEST SETUP
     And Click save button in grading setup
     And Check error message is displayed or not in grading setup page
     Then Close Test Setup button
-@Test
+
   @TC_34
   Scenario: Grading Setup:Valid Check
     Given Click new test button
@@ -469,7 +461,7 @@ Feature: TEST SETUP
     Then Click save button in grading setup
     And Check success message is displayed or not in grading setup
     Then Close Test Setup button
-@Test
+
   @TC_35
   Scenario: Grading Setup:Valid Check
     Given Click new test button
@@ -613,7 +605,7 @@ Feature: TEST SETUP
     And Click finalize button in Finalize test page
     Then Check success message is displayed or not in Finalize Test tab
     Then Close Test Setup button
-@Test
+
    @TC_43
   Scenario: Main Test:Valid Check
     Given Click new test button
