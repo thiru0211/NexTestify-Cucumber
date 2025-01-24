@@ -273,11 +273,12 @@ public class OEP_4_LoginPage {
 	}
 
 	@Then("Check landing page after click ok button")
-	public void check_landing_page_after_click_ok_button() {
-		String currentUrl = driver.getCurrentUrl();
-		System.out.println("Current URL is: " + currentUrl);
-		String expectedUrl = "http://192.168.1.30/OEPADMIN/Login";
-		Assert.assertEquals("Page navigates to login page", currentUrl, expectedUrl);
+	public void check_landing_page_after_click_ok_button() throws InterruptedException {
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[contains(text(),'Login')]")));
+		ele1 = driver.findElement(By.xpath("//button[contains(text(),'Login')]"));
+		Assert.assertTrue("Page doesnot login to login page", ele1.isDisplayed());
 	}
 
 	@When("Click ENTER button")

@@ -140,7 +140,7 @@ Feature: Login Page
   @TC_16
   Scenario: Login:2FA Enabled User Check
     Given To Check Login is navigating to OEP URL is "http://192.168.1.30/OEPADMIN/"
-    When To Check Login Enter Invalid username and valid password are "twofauser@yopmail.com" and "Thirumaran@111"
+    When To Check Login Enter Invalid username and valid password are "twofauser123@yopmail.com" and "Thirumaran@111"
     And click the Signin button To Check Login
     Then Check the landing page using assert function
     Then close the Login Page

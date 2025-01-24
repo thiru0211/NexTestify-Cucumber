@@ -720,7 +720,7 @@ Feature: TEST SETUP
     And Click Grading setup tab
     Then Modify the details in Grading Setup
     And Click update button in Grading Setup
-    Then Check success message is displayed or not in Grading Setup tab
+    Then Check success message is displayed or not in grading setup tab
     Then Close Test Setup button
 
   @TC_51

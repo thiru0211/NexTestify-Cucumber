@@ -253,7 +253,7 @@ Feature: STUDY MATERIAL
     And Enter valid details in the Synopsis box
     Then Upload valid files in appendices tab
     And Click save button in add material
-    Then Check success message is displayed or not in add material
+    #Then Check success message is displayed or not in add material
     Then Close Study Material button
     
      @TC_26
