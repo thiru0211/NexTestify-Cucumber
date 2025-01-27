@@ -426,7 +426,7 @@ Feature: ADMIN
     Given Click User logo button in Top right corner in create admin
     And Click SignOut button in create admin
     Then Enter valid email id login page "twofauser@yopmail.com"
-    And Enter invalid password "asdasdasdasdasd"
+    And Enter invalid password "asdasdas"
     Then Click login button 5times
     And Check lock message is displayed or not
     Then Close Admin button

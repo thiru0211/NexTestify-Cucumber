@@ -3031,9 +3031,9 @@ public class OEP_2_QuestionManager {
 		Thread.sleep(2000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions
-				.presenceOfElementLocated(By.xpath("(//button[contains(@class,'btn-icon btn-icon-start')])[1]")));
+				.presenceOfElementLocated(By.xpath("(//button[@type='button'])[2]")));
 		Thread.sleep(2000);
-		ele1 = driver.findElement(By.xpath("(//button[contains(@class,'btn-icon btn-icon-start')])[1]"));
+		ele1 = driver.findElement(By.xpath("(//button[@type='button'])[2]"));
 		ele1.click();
 	}
 

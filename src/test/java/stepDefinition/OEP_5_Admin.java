@@ -375,10 +375,13 @@ public class OEP_5_Admin {
 	}
 
 	@Given("Click save button in create admin page")
-	public void click_save_button_in_create_admin_page() {
+	public void click_save_button_in_create_admin_page() throws InterruptedException {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@title='Click here to save']")));
 		ele1 = driver.findElement(By.xpath("//button[@title='Click here to save']"));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView(true);", ele1);
+		Thread.sleep(2000);
 		ele1.click();
 	}
 
