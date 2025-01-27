@@ -10,7 +10,7 @@ import io.cucumber.junit.CucumberOptions;
 //dryRun = true,
 //tags="@TC_01",
 		plugin = {"pretty",
-				"html:target/cucumber-html-report",
+				"html:target/Test Setup_cucumber-html-report.html",
 				"html:Reports/TestReport.html",
 				"json:target/cucumber/cucumber.json",
 				"html:Reports/cucumber-reports.html",
