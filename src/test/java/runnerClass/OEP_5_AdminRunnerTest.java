@@ -12,10 +12,8 @@ monochrome = true,
 //dryRun = true,
 //tags="@TC_44",
 plugin = {"pretty",
-		"html:target/Admin_cucumber-html-report",
-		"html:Reports/TestReport.html",
-		"json:target/cucumber/cucumber.json",
-		"html:Reports/cucumber-reports.html",
+		"html:target/cucumber/Admin_cucumberhtml-report.html",
+		"json:target/cucumber/Admin_cucumber.json",
 		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 		})
 

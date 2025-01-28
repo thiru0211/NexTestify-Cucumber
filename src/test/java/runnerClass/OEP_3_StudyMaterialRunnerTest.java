@@ -10,10 +10,12 @@ import io.cucumber.junit.CucumberOptions;
 //dryRun = true,
 //tags="@Test",
 		plugin = {"pretty",
-				"html:target/Study Material_cucumber-html-report.html",
-				"html:Reports/TestReport.html",
-				"json:target/cucumber/cucumber.json",
-				"html:Reports/cucumber-reports.html",
+//				"html:target/Study Material_cucumber-html-report.html",
+//				"html:Reports/TestReport.html",
+//				"json:target/cucumber/cucumber.json",
+//				"html:Reports/cucumber-reports.html",
+				"html:target/cucumber/Study Material_cucumberhtml-report.html",
+				"json:target/cucumber/Study Material_cucumber.json",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 				})
 public class OEP_3_StudyMaterialRunnerTest {

@@ -10,10 +10,8 @@ import io.cucumber.junit.CucumberOptions;
 //dryRun = true,
 //tags="@TC_01",
 		plugin = {"pretty",
-				"html:target/Test Setup_cucumber-html-report.html",
-				"html:Reports/TestReport.html",
-				"json:target/cucumber/cucumber.json",
-				"html:Reports/cucumber-reports.html",
+				"html:target/cucumber/Test Setup_cucumberhtml-report.html",
+				"json:target/cucumber/Test Setup_cucumber.json",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 				})
 public class OEP_1_TestSetupRunnerTest {
