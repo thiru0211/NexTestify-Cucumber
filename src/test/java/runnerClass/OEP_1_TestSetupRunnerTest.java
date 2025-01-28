@@ -11,8 +11,7 @@ import io.cucumber.junit.CucumberOptions;
 tags="@Test",
 		plugin = {"pretty",
 				"html:target/cucumber/Test Setup_cucumberhtml-report.html",
-				"json:target/cucumber/Test Setup_cucumber.json",
-				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+				"json:target/cucumber/Test Setup_cucumber.json"
 				})
 public class OEP_1_TestSetupRunnerTest {
 

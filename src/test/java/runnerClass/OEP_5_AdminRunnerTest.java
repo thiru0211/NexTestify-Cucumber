@@ -13,8 +13,7 @@ monochrome = true,
 //tags="@TC_44",
 plugin = {"pretty",
 		"html:target/cucumber/Admin_cucumberhtml-report.html",
-		"json:target/cucumber/Admin_cucumber.json",
-		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+		"json:target/cucumber/Admin_cucumber.json"
 		})
 
 public class OEP_5_AdminRunnerTest {

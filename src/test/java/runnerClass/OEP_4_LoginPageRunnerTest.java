@@ -13,8 +13,7 @@ monochrome = true,
 //tags="@TC_17",
 plugin = {"pretty",
 		"html:target/cucumber/Login Page_cucumberhtml-report.html",
-		"json:target/cucumber/Login Page_cucumber.json",
-		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+		"json:target/cucumber/Login Page_cucumber.json"
 		})
 public class OEP_4_LoginPageRunnerTest {
 
