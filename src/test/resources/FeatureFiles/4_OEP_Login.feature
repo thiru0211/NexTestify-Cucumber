@@ -1,4 +1,4 @@
-Feature: Login Page
+Feature: LOGIN PAGE
 
   @TC_01
   Scenario: Login:Valid Check

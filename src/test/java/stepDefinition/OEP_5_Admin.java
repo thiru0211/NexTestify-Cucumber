@@ -674,10 +674,8 @@ public class OEP_5_Admin {
 				"//div[normalize-space(text())='Select']"));
 		ele1.click();
 		Thread.sleep(2000);
-		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='+91']"));
-		Thread.sleep(2000);
-		ele2.click();
-	}
+		ele1.sendKeys(phone);
+		}
 
 	@Then("Enter valid phone number {string}")
 	public void enter_valid_phone_number(String phone) {

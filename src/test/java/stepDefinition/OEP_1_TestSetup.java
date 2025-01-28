@@ -493,7 +493,7 @@ public class OEP_1_TestSetup {
 
 	@Then("Click clear button")
 	public void click_clear_button() throws InterruptedException {
-		Thread.sleep(8000);
+		Thread.sleep(15000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@title='click here to clear']")));
 		ele1 = driver.findElement(By.xpath("//button[@title='click here to clear']"));

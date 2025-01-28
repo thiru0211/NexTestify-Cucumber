@@ -251,18 +251,11 @@ Feature: TEST SETUP
     Given Search any valid main test name
     Then Click the test name
     And Click question manager tab
-    And Enter valid overall question values
-    Then Enter valid overall points values
-    And Select valid topic
-    Then Click add button
-    And Enter valid value in questions tab
-    Then Enter valid value in points tab
-    And Enter valid in Time tab based on proper format
-    Then Click clear button
+    Then Click clear button in question manager
     And Check all tabs are cleared or not in question manager
     Then Close Test Setup button
 
-   @TC_23
+  @TC_23
   Scenario: Question Manager:Save Check
     Given Click new test button
     Then Click Practice Test radio button
@@ -293,7 +286,7 @@ Feature: TEST SETUP
     And Check landing page
     Then Close Test Setup button
 
-   @TC_25
+  @TC_25
   Scenario: Basic Settings:Save Check
     Given Click new test button
     Then Click Main Test radio button
@@ -374,7 +367,7 @@ Feature: TEST SETUP
     Given Search any valid main test name
     Then Click the test name
     And Click Grading setup tab
-   # Then Check all features are working or not in the all failed text box
+    # Then Check all features are working or not in the all failed text box
     And Clear the text present in the all failed text box
     Then Enter valid message in the all failed text box
     Then Close Test Setup button
@@ -606,7 +599,7 @@ Feature: TEST SETUP
     Then Check success message is displayed or not in Finalize Test tab
     Then Close Test Setup button
 
-   @TC_43
+  @TC_43
   Scenario: Main Test:Valid Check
     Given Click new test button
     Then Click Main Test radio button
@@ -662,7 +655,7 @@ Feature: TEST SETUP
     And Check success message is displayed or not in basic settings
     Then Close Test Setup button
 
-   @TC_46
+  @TC_46
   Scenario: Edit Test:Question Manager
     Given Search any valid main test name
     And Select "In Progress" 2nd Option in the dropdown
@@ -672,7 +665,7 @@ Feature: TEST SETUP
     Then Check all tabs are cleared or not in question manager
     Then Close Test Setup button
 
-   @TC_47
+  @TC_47
   Scenario: Edit Test:Question Manager
     Given Search any valid main test name
     And Select "In Progress" 2nd Option in the dropdown
