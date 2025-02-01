@@ -137,7 +137,16 @@ public class OEP_4_LoginPage {
 		Thread.sleep(2000);
 		ele1.sendKeys(Keys.ENTER);
 	}
-
+	@Then("Click take picture button")
+	public void click_take_picture_button() throws InterruptedException {
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
+				"//button[normalize-space(text())='Take Picture']")));
+		ele1 = driver.findElement(By.xpath(
+				"//button[normalize-space(text())='Take Picture']"));
+		ele1.click();
+	}
 	@Then("Click edit button to unlock the account")
 	public void click_edit_button_to_unlock_the_account() throws InterruptedException {
 		Thread.sleep(3000);

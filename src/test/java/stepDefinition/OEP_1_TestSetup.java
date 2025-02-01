@@ -157,7 +157,16 @@ public class OEP_1_TestSetup {
 		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='All Test']"));
 		ele2.click();
 	}
-
+	@Then("Click take picture button in test setup")
+	public void click_take_picture_button_in_test_setup() throws InterruptedException {
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
+				"//button[normalize-space(text())='Take Picture']")));
+		ele1 = driver.findElement(By.xpath(
+				"//button[normalize-space(text())='Take Picture']"));
+		ele1.click();
+	}
 	@When("Select {string} 2nd Option in the dropdown")
 	public void select_2nd_option_in_the_dropdown(String string) throws InterruptedException {
 		Thread.sleep(4000);

@@ -184,6 +184,17 @@ public class OEP_3_StudyMaterial {
 		ele2.click();
 	}
 
+	@Then("Click take picture button in Study Material")
+	public void click_take_picture_button_in_Study_Material() throws InterruptedException {
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
+				"//button[normalize-space(text())='Take Picture']")));
+		ele1 = driver.findElement(By.xpath(
+				"//button[normalize-space(text())='Take Picture']"));
+		ele1.click();
+	}
+	
 	@Then("Select valid topic name in create material")
 	public void select_valid_topic_name_in_create_material() throws InterruptedException {
 		Thread.sleep(2000);

@@ -132,6 +132,16 @@ public class OEP_5_Admin {
 		Assert.assertEquals("Entered Phone Number is not displayed", actualText, expectedText);
 	}
 
+	@Then("Click take picture button in admin")
+	public void click_take_picture_button_in_admin() throws InterruptedException {
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
+				"//button[normalize-space(text())='Take Picture']")));
+		ele1 = driver.findElement(By.xpath(
+				"//button[normalize-space(text())='Take Picture']"));
+		ele1.click();
+	}
 	@Given("Enter valid username {string} in the searchbox")
 	public void enter_valid_username_in_the_searchbox(String username) throws InterruptedException {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));

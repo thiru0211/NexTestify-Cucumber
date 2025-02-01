@@ -12,6 +12,7 @@ Feature: LOGIN PAGE
     Given To Check Login is navigating to OEP URL is "http://192.168.1.30/OEPADMIN/"
     When To Check Login Enter username and password are "thirumaran@sankarasoftware.com" and "Thirumaran@8870"
     And click the Signin button To Check Login
+    Then Click take picture button
     Then Click User logo button in Top right corner
     And Click SignOut button
     Then Check login page is displayed or not using assert

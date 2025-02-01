@@ -4,6 +4,7 @@ Feature: QUESTION MANAGER
     Given To Check Create Question is navigating to OEP URL is "http://192.168.1.30/OEPADMIN/"
     When To Check Create Question Enter username and password are "thirumaran@sankarasoftware.com" and "Thirumaran@8870"
     And click the Signin button To Check Create Question
+    Then Click take picture button in Create Question
     Then Click Create Question button
 
   @TC_01
