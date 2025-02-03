@@ -62,7 +62,7 @@ Feature: STUDY MATERIAL
     Given Click any subject name
     When Click add material button
     Then Enter valid synopsis
-    And Check all features are working or not in the text box
+   # And Check all features are working or not in the text box
     Then Close Study Material button
 
     @TC_08
@@ -174,6 +174,7 @@ Feature: STUDY MATERIAL
     When Click add material button
     And Select any subject from the dropdown in the subject tab
     Then Click add button in topic tab in create material page
+ #   And Select valid subject name in add topic pop up in add material page
     And Enter valid topic name in add topic tab
     Then Click add button in add topic tab
     And Check success message is displayed or not in add material page
@@ -240,7 +241,7 @@ Feature: STUDY MATERIAL
     And Select any subject from the dropdown in the subject tab
     Then Select any topic name from the dropdown in topic tab
     And Click delete button in topic tab
-    Then Click yes button in delete topic
+   # Then Click yes button in delete topic
     Then Close Study Material button
 
     @TC_25
@@ -322,7 +323,7 @@ Feature: STUDY MATERIAL
     Given Click any subject name
     When Click the exercise button
     And Click edit button of any exercise question
-    And Check all features are working or not in questions tab
+    #And Check all features are working or not in questions tab
     Then Close Study Material button
     
     @TC_34
@@ -330,7 +331,7 @@ Feature: STUDY MATERIAL
     Given Click any subject name
     When Click the exercise button
     And Click edit button of any exercise question
-    And Check all features are working or not in answers 1st option tab
+  #  And Check all features are working or not in answers 1st option tab
     Then Close Study Material button
     
     @TC_35

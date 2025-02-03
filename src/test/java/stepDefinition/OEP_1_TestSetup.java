@@ -91,6 +91,7 @@ public class OEP_1_TestSetup {
 		Thread.sleep(2000);
 		ele1.sendKeys(username);
 		Thread.sleep(2000);
+		ele1.sendKeys(Keys.ENTER);
 	}
 
 	@When("Enter valid date {string} in the searchbox")
@@ -141,6 +142,7 @@ public class OEP_1_TestSetup {
 		ele1.click();
 		Thread.sleep(2000);
 		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='All Status']"));
+		Thread.sleep(2000);
 		ele2.click();
 	}
 
@@ -177,6 +179,7 @@ public class OEP_1_TestSetup {
 		ele1.click();
 		Thread.sleep(2000);
 		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='In Progress']"));
+		Thread.sleep(2000);
 		ele2.click();
 	}
 
@@ -191,6 +194,7 @@ public class OEP_1_TestSetup {
 		ele1.click();
 		Thread.sleep(2000);
 		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='Practice Test']"));
+		Thread.sleep(2000);
 		ele2.click();
 	}
 
@@ -204,6 +208,7 @@ public class OEP_1_TestSetup {
 		ele1.click();
 		Thread.sleep(2000);
 		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='Completed']"));
+		Thread.sleep(2000);
 		ele2.click();
 	}
 
@@ -218,6 +223,7 @@ public class OEP_1_TestSetup {
 		ele1.click();
 		Thread.sleep(2000);
 		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='Main Test']"));
+		Thread.sleep(2000);
 		ele2.click();
 	}
 
@@ -231,6 +237,7 @@ public class OEP_1_TestSetup {
 		ele1.click();
 		Thread.sleep(2000);
 		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='Frozen']"));
+		Thread.sleep(2000);
 		ele2.click();
 	}
 
@@ -462,6 +469,7 @@ public class OEP_1_TestSetup {
 		String uuid = UUID.randomUUID().toString();
 		String randomTestName = "Test_" + uuid.substring(0, 8);
 		ele1.sendKeys(randomTestName);
+		
 	}
 
 	@Then("Select valid subject name")

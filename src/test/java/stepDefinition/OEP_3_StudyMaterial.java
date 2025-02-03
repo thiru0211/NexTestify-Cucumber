@@ -671,6 +671,22 @@ public class OEP_3_StudyMaterial {
 		ele2.click();
 	}
 	
+	@Then("Select valid subject name in add topic pop up in add material page")
+	public void select_valid_subject_name_in_add_topic_pop_up_in_add_material_page() throws InterruptedException {
+		Thread.sleep(2000);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(
+				"(//div[contains(@class,'react-select__value-container react-select__value-container--has-value')])[3]")));
+		ele1 = driver.findElement(By.xpath(
+				"(//div[contains(@class,'react-select__value-container react-select__value-container--has-value')])[3]"));
+		Thread.sleep(2000);
+		ele1.click();
+		Thread.sleep(2000);
+		ele2 = driver.findElement(By.xpath("//div[normalize-space(text())='Artificial Intelligence']"));
+		Thread.sleep(2000);
+		ele2.click();
+	}
+	
 	@Then("Select any topic name from the dropdown in topic")
 	public void select_any_topic_name_from_the_dropdown_in_topic() throws InterruptedException {
 		Thread.sleep(2000);

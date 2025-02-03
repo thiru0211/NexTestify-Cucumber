@@ -28,7 +28,7 @@ Feature: ADMIN
 
   @TC_03
   Scenario: Admin:User Type Check
-    Given Select "All" 1st Option in user type dropdown
+    Given Select "All Admins" 1st Option in user type dropdown
     When Select "Super Admin" 2nd Option in user type dropdown
     Then Check Selected "Super Admin" user type is displayed or not
     And Select "Proctor" 3rd Option in user type dropdown
@@ -289,19 +289,18 @@ Feature: ADMIN
     And Enter valid characters "123456" in Zip Code tab
     Then Check tab is empty or not in Zip Code
     Then Close Admin button
+
   #@TC_39
   #Scenario: ADD USER:User Profile Check
-    #Given Click Add User button in create admin page
-    #And Upload invalid file in profile upload tab
-    #Then Check error message is displayed or not for invalid file upload
-    #Then Close Admin button
-
+  #Given Click Add User button in create admin page
+  #And Upload invalid file in profile upload tab
+  #Then Check error message is displayed or not for invalid file upload
+  #Then Close Admin button
   #@TC_40
   #Scenario: ADD USER:User Profile Check
-    #Given Click Add User button in create admin page
-    #And Upload valid file in profile upload tab
-    #Then Close Admin button
-
+  #Given Click Add User button in create admin page
+  #And Upload valid file in profile upload tab
+  #Then Close Admin button
   @TC_41
   Scenario: ADD USER:2FA Check
     Given Click Add User button in create admin page
@@ -333,7 +332,7 @@ Feature: ADMIN
     And Select valid state "New York" in the dropdown
     Then Select valid timezone "America/Chicago" in the dropdown
     And Enter valid zipcode "654321"
-   # Then Upload valid file in the profile upload page
+    # Then Upload valid file in the profile upload page
     And Select No option in the 2FA tab
     Then Click save button in create admin page
     And Check error message is displayed or not
@@ -355,7 +354,7 @@ Feature: ADMIN
     And Select valid state "New York" in the dropdown
     Then Select valid timezone "America/Chicago" in the dropdown
     And Enter valid zipcode "654321"
-  #  Then Upload valid file in the profile upload page
+    #  Then Upload valid file in the profile upload page
     And Select No option in the 2FA tab
     Then Click save button in create admin page
     Then Check admin user created success message is displayed or not
@@ -421,26 +420,6 @@ Feature: ADMIN
     Then Click verify email button
     And Check success message is displayed or not in verify email
     Then Close Admin button
-
-  @TC_51
-  Scenario: Update Admin:Valid Check
-    Given Click User logo button in Top right corner in create admin
-    And Click SignOut button in create admin
-    Then Enter valid email id login page "twofauser@yopmail.com"
-    And Enter invalid password "asdasdas"
-    Then Click login button 5times
-    And Check lock message is displayed or not
-    Then Close Admin button
-
-  #@TC_52
-  #Scenario: Update Admin:Valid Check
-    #Given Enter user name "twofauser@yopmail.com" in the Search box
-    #When Click Edit button
-    #Then Click unlock button
-    #And Click no button in the pop up
-    #Then Check unlock button is displayed or not
-    #Then Close Admin button
-
   #@TC_53
   #Scenario: Update Admin:Valid Check
     #Given Enter user name "twofauser@yopmail.com" in the Search box

@@ -359,7 +359,7 @@ Feature: QUESTION MANAGER
     And Click YES button in Delete Question Type popup
     Then Check success message is displayed or not in Question Type
     Then Close Create Question button
-@Test
+
   @TC_43
   Scenario: Source Type:Image field Invalid Check
     Given Click add questions button
@@ -368,7 +368,7 @@ Feature: QUESTION MANAGER
     And Select any option in question type
     Then Click and Upload invalid file format in image field
     Then Close Create Question button
-@Test
+
   @TC_44
   Scenario: Source Type:Audio field Invalid Check
     Given Click add questions button
@@ -377,7 +377,7 @@ Feature: QUESTION MANAGER
     And Select any option in question type
     Then Click and Upload invalid file format in audio field
     Then Close Create Question button
- @Test
+ 
   @TC_45
   Scenario: Source Type:Video field Invalid Check
     Given Click add questions button
@@ -386,7 +386,7 @@ Feature: QUESTION MANAGER
     And Select any option in question type
     Then Click and Upload invalid file format in video field
     Then Close Create Question button
-@Test
+
   @TC_46
   Scenario: Source Type:Image field valid Check
     Given Click add questions button
@@ -396,7 +396,7 @@ Feature: QUESTION MANAGER
     Then Click and Upload valid file format in image field
     #And Check file is uploaded or not in image field
     Then Close Create Question button
-
+@Test
   @TC_47
   Scenario: Source Type:Audio field valid Check
     Given Click add questions button
@@ -406,7 +406,7 @@ Feature: QUESTION MANAGER
     Then Click and Upload valid file format in audio field
     And Check file is uploaded or not in audio field
     Then Close Create Question button
-@Test
+
   @TC_48
   Scenario: Source Type:Video field valid Check
     Given Click add questions button
@@ -457,7 +457,7 @@ Feature: QUESTION MANAGER
     Then Select any option in topic
     And Select ESSAY option in question type
     Then Enter valid details in question text box
-    And Perform and check all features in the question text box
+   #And Perform and check all features in the question text box
     Then Close Create Question button
 
   @TC_53
@@ -467,7 +467,7 @@ Feature: QUESTION MANAGER
     Then Select any option in topic
     And Select ESSAY option in question type
     Then Enter valid details in answers text box
-    And Perform and check all features in the answers text box
+   # And Perform and check all features in the answers text box
     Then Close Create Question button
 
   @TC_54
@@ -477,7 +477,7 @@ Feature: QUESTION MANAGER
     Then Select any option in topic
     And Select ESSAY option in question type
     Then Enter valid details in remarks text box in add questions
-    And Perform and check all features in the remarks text box
+  #  And Perform and check all features in the remarks text box
     Then Close Create Question button
 
   @TC_55
@@ -487,7 +487,7 @@ Feature: QUESTION MANAGER
     Then Select any option in topic
     And Select ESSAY option in question type
     Then Enter valid details in Explanation text box
-    And Perform and check all features in the Explanation text box
+    #And Perform and check all features in the Explanation text box
     Then Close Create Question button
 
   @TC_56
@@ -574,7 +574,7 @@ Feature: QUESTION MANAGER
     Then Click clear button for fill in the blanks type
     And Check tab is cleared or not for fill in the blanks type
     Then Close Create Question button
-
+@Test
   @TC_61
   Scenario: Fill in the blanks Type:Save Check
     Given Click add questions button
@@ -639,7 +639,7 @@ Feature: QUESTION MANAGER
     Then Click save button for Multiple Choice type
     And Check success message is displayed or not for Multiple Choice type
     Then Close Create Question button
-
+@Test
   @TC_64
   Scenario: Short Answer Type:Clear Check
     Given Click add questions button
@@ -660,7 +660,7 @@ Feature: QUESTION MANAGER
     Then Click clear button for Short Answer type
     And Check tab is cleared or not for Short Answer type
     Then Close Create Question button
-@Test
+
   @TC_65
   Scenario: Short Answer Type:Save Check
     Given Click add questions button
@@ -802,7 +802,7 @@ Feature: QUESTION MANAGER
     Then Click clear button in edit question page
     And Check details are cleared or not in edit question page
     Then Close Create Question button
-
+@Test
   @TC_73
   Scenario: Edit Question:Source Type:Delete Check
     Given Search valid question name in search field

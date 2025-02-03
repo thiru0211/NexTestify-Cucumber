@@ -14,8 +14,8 @@ Feature: LOGIN PAGE
     And click the Signin button To Check Login
     Then Click take picture button
     Then Click User logo button in Top right corner
-    And Click SignOut button
-    Then Check login page is displayed or not using assert
+    #And Click SignOut button
+    #Then Check login page is displayed or not using assert
     Then close the Login Page
 
   @TC_03

@@ -73,8 +73,8 @@ public class OEP_4_LoginPage {
 	@Then("Click SignOut button")
 	public void click_sign_out_button() {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[normalize-space()='Logout']")));
-		ele1 = driver.findElement(By.xpath("//span[normalize-space()='Logout']"));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("colorButton1")));
+		ele1 = driver.findElement(By.id("colorButton1"));
 		ele1.click();
 	}
 

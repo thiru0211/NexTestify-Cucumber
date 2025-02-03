@@ -8,7 +8,7 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "C:\\Users\\thirumaran\\eclipse-workspace\\NexTestify_Cucumber\\src\\test\\resources\\FeatureFiles\\2_OEP_QuestionManager.feature", glue = "stepDefinition", monochrome = true,
 //dryRun = true,
-//tags="@TC_72",
+//tags="@Test",
 		plugin = {"pretty",
 			"html:target/cucumber/Question Manager_cucumberhtml-report.html",
 			"json:target/cucumber/Question Manager_cucumber.json"
