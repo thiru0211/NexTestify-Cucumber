@@ -33,7 +33,7 @@ public class OEP_2_QuestionManager {
 	public void to_check_create_question_is_navigating_to_oep_url_is(String url) {
 		System.setProperty("webdriver.chrome.driver", ".\\Driver\\chromedriver.exe");
 		ChromeOptions option = new ChromeOptions();
-//		option.addArguments("--headless=new");
+		option.addArguments("--headless=new");
 		driver = new ChromeDriver(option);
 		driver.manage().window().maximize();
 		driver.get(url);
